@@ -1,0 +1,13 @@
+title: "Artimishraa"
+description: "My root GitHub Pages site"
+author: "Artimishraa"
+
+# For root site, baseurl must be empty
+url: "https://artimishraa.github.io"
+baseurl: ""
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

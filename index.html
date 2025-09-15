@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Only Apps – Simple Android Tools</title>
+  <meta name="description" content="Only Apps by Ankush Mishra — simple, private, lightweight Android utilities." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #202124;
+      --muted: #5f6368;
+      --card-bg: #fff;
+      --card-border: #e0e0e0;
+      --shadow: 0 2px 6px rgba(0,0,0,0.08);
+      --brand: #ff7a18;
+      --brand-2: #ffb03a;
+    }
+
+    body {
+      margin: 0;
+      font-family: Roboto, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 28px; }
+
+    header { text-align: center; margin-bottom: 32px; }
+    header h1 { font-weight: 700; font-size: 1.8rem; margin: 0; }
+    header p { color: var(--muted); margin: 6px 0 0; }
+
+    /* Grid */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform .15s ease;
+    }
+    .card:hover { transform: translateY(-3px); }
+
+    .app-icon {
+      width: 92px; height: 92px;
+      border-radius: 18px;
+      display: grid; place-items: center;
+      font-size: 34px; color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+
+    .app h3 { margin: 4px 0; font-size: 1.05rem; font-weight: 600; }
+    .app p { margin: 6px 0 16px; color: var(--muted); font-size: 0.95rem; line-height: 1.4rem; flex-grow: 1; }
+
+    .btn {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { box-shadow: 0 4px 12px rgba(255, 122, 24, 0.35); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    footer {
+      margin: 40px 0 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    footer a { color: var(--brand); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Only Apps</h1>
+      <p>Simple · Private · Lightweight</p>
+    </header>
+
+    <section id="apps" class="grid">
+
+      <!-- Only Gallery -->
+      <article class="card">
+        <div class="app-icon">🖼️</div>
+        <div class="app">
+          <h3>Only Gallery</h3>
+          <p>Powerful, private, distraction-free photo & video app. No ads.</p>
+        </div>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.andmobi.gallery" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Get on Google Play
+        </a>
+      </article>
+
+      <!-- Only Play -->
+      <article class="card">
+        <div class="app-icon">▶️</div>
+        <div class="app"><h3>Only Play</h3><p>Fast, lightweight offline video player. Just your videos.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.andmobi.onlyplay" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Music -->
+      <article class="card">
+        <div class="app-icon">🎵</div>
+        <div class="app"><h3>Only Music</h3><p>Simple, powerful, ad-free offline music player. No tracking.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.andmobi.music" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Keyboard -->
+      <article class="card">
+        <div class="app-icon">⌨️</div>
+        <div class="app"><h3>Only Keyboard</h3><p>Fast, distraction-free keyboard with essentials only.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Notes -->
+      <article class="card">
+        <div class="app-icon">📝</div>
+        <div class="app"><h3>Only Notes</h3><p>Plain-text notes that stay local. No fluff, no ads.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Clock -->
+      <article class="card">
+        <div class="app-icon">⏰</div>
+        <div class="app"><h3>Only Clock</h3><p>Clean, ad-free clock app with alarms and bedside mode.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.andmobi.clock" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Files -->
+      <article class="card">
+        <div class="app-icon">📂</div>
+        <div class="app"><h3>Only Files</h3><p>Lightweight file manager to browse and organize your files.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Calendar -->
+      <article class="card">
+        <div class="app-icon">📅</div>
+        <div class="app"><h3>Only Calendar</h3><p>A minimal calendar to stay organized without distractions.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Launcher -->
+      <article class="card">
+        <div class="app-icon">🚀</div>
+        <div class="app"><h3>Only Launcher</h3><p>Lightweight Android launcher focused on speed and simplicity.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Get on Google Play</a>
+      </article>
+
+      <!-- Only Camera -->
+      <article class="card">
+        <div class="app-icon">📷</div>
+        <div class="app"><h3>Only Camera</h3><p>Instant photo capture with a clean interface and no clutter.</p></div>
+        <a class="btn" href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Get on Google Play</a>
+      </article>
+
+    </section>
+
+    <footer>
+      <p>© <span id="y"></span> Only Apps · Contact: <a href="mailto:onlyapp.contact@gmail.com">onlyapp.contact@gmail.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
