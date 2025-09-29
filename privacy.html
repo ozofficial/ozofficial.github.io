@@ -9,24 +9,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
+    :root{
       --bg:#fafafa; --surface:#ffffff; --surface-variant:#f2f4f7;
       --border:rgba(0,0,0,.08); --text:#1f1f1f; --muted:#5f6368;
-      --max:880px; --ring:0 0 0 3px rgba(66,133,244,.28)
+      --max:880px;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b0b10; --surface:#12151c; --surface-variant:#171b24; --border:rgba(255,255,255,.12); --text:#e8eaed; --muted:#b0b4ba; }
+      :root{
+        --bg:#0b0b10; --surface:#12151c; --surface-variant:#171b24;
+        --border:rgba(255,255,255,.12); --text:#e8eaed; --muted:#b0b4ba;
+      }
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    header{padding:18px 24px;text-align:center;border-bottom:1px solid var(--border);background:var(--surface-variant)}
+    header{padding:20px;text-align:center;border-bottom:1px solid var(--border);background:var(--surface-variant)}
     h1{margin:0;font-size:clamp(26px,4vw,34px);font-weight:800}
     main{max-width:var(--max);margin:0 auto;padding:32px 20px;display:grid;gap:28px}
     h2{font-size:1.4rem;margin:1.2em 0 .6em;font-weight:700}
     h3{font-size:1.15rem;margin:1em 0 .5em;font-weight:600}
-    p{margin:.4em 0}
+    p{margin:.5em 0}
     ul{margin:.6em 0 .6em 1.4em;padding:0}
     li{margin:.4em 0}
+    .muted{color:var(--muted)}
     footer{text-align:center;font-size:.9rem;color:var(--muted);padding:32px 16px;border-top:1px solid var(--border)}
     a{color:inherit;text-decoration:underline}
   </style>
@@ -57,7 +61,11 @@
     <section>
       <h2>Applications Covered</h2>
       <p>This policy applies to the complete Only Apps suite available on Google Play under OnlyEssential:</p>
-      <p>Only Launcher · Only Gallery · Only Files · Only Music · Only Calendar · Only Camera · Only Notes · Only Clock · Only Keyboard · Only Phone · Only Messages · Only Contacts · Only Play (video player) · Only Calculator · Only Applock · Only Voice Recorder</p>
+      <p class="muted">
+        Only Launcher · Only Gallery · Only Files · Only Music · Only Calendar · Only Camera · Only Notes ·  
+        Only Clock · Only Keyboard · Only Phone · Only Messages · Only Contacts · Only Play (video player) ·  
+        Only Calculator · Only Applock · Only Voice Recorder
+      </p>
       <p class="muted">Availability may vary by region. See each listing on Google Play for current status.</p>
     </section>
 
