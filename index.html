@@ -36,9 +36,12 @@
     header{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);
       background:rgba(255,255,255,.75);border-bottom:1px solid var(--border)}
     @media (prefers-color-scheme: dark){header{background:rgba(18,21,28,.7)}}
-    .header-inner{text-align:center;padding:16px 24px}
+    .header-inner{max-width:var(--max);margin:0 auto;text-align:center;padding:16px 24px;display:grid;gap:8px}
     .brand{margin:0;font-size:clamp(22px,4vw,34px);font-weight:800;letter-spacing:-.02em}
     .tagline{margin:6px 0 0;color:var(--muted)}
+    .topnav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .topnav a{display:inline-block;padding:8px 12px;border-radius:9999px;border:1px solid var(--border);background:var(--surface-variant);font-weight:700}
+    .topnav a:hover{transform:translateY(-1px);box-shadow:var(--elev-1)}
 
     .hero{background:linear-gradient(135deg, rgba(66,133,244,.08), rgba(52,168,83,.08));border-bottom:1px solid var(--border)}
     .hero-inner{max-width:var(--max);margin:0 auto;padding:22px 24px;display:grid;gap:14px;text-align:center}
@@ -82,6 +85,14 @@
     }
     .card-link{position:absolute;inset:0;z-index:1;border-radius:inherit}
 
+    /* About & Contact */
+    .section{border-top:1px solid var(--border);background:var(--surface-variant)}
+    .section-inner{max-width:var(--max);margin:0 auto;padding:32px 24px;display:grid;gap:18px}
+    .section h2{margin:0;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em}
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:9999px;background:var(--surface);font-weight:700}
+    .kudos{display:flex;gap:10px;flex-wrap:wrap}
+
     footer{text-align:center;font-size:.9rem;color:var(--muted);margin:36px 0 24px}
 
     /* Mobile tweaks */
@@ -102,6 +113,11 @@
     <div class="header-inner">
       <h1 class="brand">Only Essential</h1>
       <p class="tagline">Simple • Private • Lightweight</p>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#apps" aria-label="Skip to apps">Apps</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -129,8 +145,32 @@
     <section id="apps" class="app-grid" aria-live="polite"></section>
   </main>
 
+  <!-- About -->
+  <section id="about" class="section" aria-label="About Only Essential">
+    <div class="section-inner">
+      <h2>About</h2>
+      <p class="muted">Only Essential is a suite of small, focused Android apps. No ads. No trackers. No accounts. Most apps are 100% offline by design so your data stays on your device.</p>
+      <div class="kudos" aria-label="Principles">
+        <span class="pill" aria-hidden="true">Private by default</span>
+        <span class="pill" aria-hidden="true">Lightweight & fast</span>
+        <span class="pill" aria-hidden="true">No bloat, no nags</span>
+        <span class="pill" aria-hidden="true">Open to feedback</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section" aria-label="Contact">
+    <div class="section-inner">
+      <h2>Contact</h2>
+      <p class="muted">Questions, ideas, or bug reports? We love hearing from you.</p>
+      <p><strong>Email:</strong> <a href="mailto:onlyapp.contact@gmail.com" target="_blank" rel="noopener">onlyapp.contact@gmail.com</a></p>
+      <p class="muted">When reporting a bug, please include your device model, Android version, and steps to reproduce.</p>
+    </div>
+  </section>
+
   <footer role="contentinfo">
-    <p>© <span id="y"></span> Only Essential · Contact: <a href="mailto:onlyapp.contact@gmail.com">onlyapp.contact@gmail.com</a></p>
+    <p>© <span id="y"></span> Only Essential · <a href="#about">About</a> · <a href="#contact">Contact</a></p>
   </footer>
 
   <script>
