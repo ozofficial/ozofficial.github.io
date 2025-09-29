@@ -1,125 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — Only Apps by OnlyEssential</title>
-  <meta name="description" content="Only Apps are offline, ad‑free utilities. We collect no personal data and request no Internet permission." />
+  <meta name="description" content="Privacy Policy for the Only Apps suite by OnlyEssential." />
   <style>
-    :root { --fg:#0f172a; --muted:#475569; --line:#e2e8f0; --link:#0369a1; --bg:#ffffff; }
-    @media (prefers-color-scheme: dark){ :root{ --fg:#e5e7eb; --muted:#94a3b8; --line:#334155; --link:#38bdf8; --bg:#0b1220; }}
-    html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
-    .wrap{max-width:860px;margin:auto;padding:32px 18px 60px;}
-    h1{font-size:clamp(1.8rem,3vw,2.2rem);margin:.2rem 0 0.25rem}
-    h2{font-size:1.25rem;margin:1.6rem 0 .4rem}
-    h3{font-size:1.05rem;margin:1rem 0 .2rem}
-    p,li{color:var(--fg)}
-    .lede{color:var(--muted)}
-    .card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:.6rem 0}
-    ul{padding-left:1.2rem}
-    a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
-    hr{border:0;border-top:1px solid var(--line);margin:1.6rem 0}
-    .apps{columns:2;gap:12px}
-    @media (max-width:640px){ .apps{columns:1} }
-    .foot{color:var(--muted);font-size:.95rem;margin-top:1.2rem}
+    :root{
+      --bg:#f4f6f8; --card:#ffffff; --text:#111827; --muted:#4b5563;
+      --border:#e5e7eb; --ring:rgba(66,133,244,.35);
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.06);
+      --max:860px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0b10; --card:#12151c; --text:#e8eaed; --muted:#b0b4ba; --border:#232733;
+        --shadow:0 16px 40px rgba(0,0,0,.5);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg); color:var(--text);
+    }
+    .wrap{max-width:var(--max); margin:28px auto; padding:0 16px 48px}
+    .card{
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:22px 22px 28px;
+    }
+    h1{margin:0 0 12px; font-size:clamp(24px,3.5vw,32px); letter-spacing:-.01em}
+    h2{margin:28px 0 10px; font-size:clamp(18px,2.8vw,22px)}
+    p{margin:10px 0; color:var(--muted); line-height:1.6}
+    ul{margin:8px 0 8px 22px; padding:0}
+    li{margin:6px 0; color:var(--muted); line-height:1.6}
+    .meta{color:var(--muted); font-weight:600}
+    a{color:inherit}
+    a:focus-visible{outline:none; box-shadow:0 0 0 3px var(--ring)}
+    .k{display:grid; gap:4px}
+    .foot{margin-top:28px; font-size:.92rem; color:var(--muted)}
   </style>
 </head>
 <body>
-  <main class="wrap" id="main">
-    <header>
-      <h1>Privacy Policy for Only Apps</h1>
-      <p class="lede"><strong>Last updated:</strong> September 15, 2025</p>
-      <p>OnlyEssential ("us", "we", or "our") operates the Only Apps suite of mobile applications (the "Services"). This Privacy Policy explains our approach to privacy across all apps published under our developer account on Google Play.</p>
-    </header>
+  <div class="wrap">
+    <div class="card" role="article" aria-labelledby="pp-title">
+      <h1 id="pp-title">Privacy Policy</h1>
+      <p class="meta">Last updated: September 15, 2025</p>
 
-    <section>
+      <p><strong>OnlyEssential</strong> (“us”, “we”, or “our”) operates the
+        <em>Only Apps</em> suite of mobile applications (the “Services”).
+        This Privacy Policy explains our approach to privacy across all apps
+        published under our developer account on Google Play.</p>
+
       <h2>Our Privacy Principles</h2>
-      <div class="card">
-        <ul>
-          <li><strong>No personal data collection.</strong> Our apps do not collect, store, or share personal data.</li>
-          <li><strong>Works fully offline.</strong> Functionality is available without any network access.</li>
-          <li><strong>No Internet permission.</strong> We do not request the <code>INTERNET</code> permission; apps cannot send or receive data online.</li>
-          <li><strong>No ads. No trackers. No analytics SDKs.</strong></li>
-          <li><strong>Minimal permissions.</strong> When a permission is requested, it is strictly for on‑device features and never used for tracking.</li>
-        </ul>
-      </div>
-    </section>
+      <ul>
+        <li><strong>No personal data collection.</strong> Our apps do not collect, store, or share personal data.</li>
+        <li><strong>Works fully offline.</strong> Functionality is available without any network access.</li>
+        <li><strong>No Internet permission.</strong> We do not request the <code>INTERNET</code> permission; apps cannot send or receive data online.</li>
+        <li><strong>No ads. No trackers. No analytics SDKs.</strong></li>
+        <li><strong>Minimal permissions.</strong> When a permission is requested, it is strictly for on-device features and never used for tracking.</li>
+      </ul>
 
-    <section>
       <h2>Applications Covered</h2>
-      <p>This policy applies to the complete Only Apps suite available on Google Play under <em>OnlyEssential</em>.</p>
-      <div class="card">
-        <div class="apps">
-          <ul>
-            <li><a href="https://play.google.com/store/apps/details?id=only.launcher">Only Launcher</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.gallery">Only Gallery</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.files">Only Files</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.music">Only Music</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.calendar">Only Calendar</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.camera">Only Camera</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.notes">Only Notes</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.clock">Only Clock</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.keyboard">Only Keyboard</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.phone">Only Phone</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.messages">Only Messages</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.contacts">Only Contacts</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.play">Only Play (video player)</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.calculator">Only Calculator</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.applock">Only Applock</a></li>
-            <li><a href="https://play.google.com/store/apps/details?id=only.voicerecorder">Only Voice Recorder</a></li>
-          </ul>
-        </div>
-      </div>
-      <p class="lede">Availability may vary by region. See each listing on Google Play for current status.</p>
-    </section>
+      <p>This policy applies to the complete Only Apps suite available on Google Play under OnlyEssential.</p>
+      <ul>
+        <li>Only Launcher</li><li>Only Gallery</li><li>Only Files</li><li>Only Music</li>
+        <li>Only Calendar</li><li>Only Camera</li><li>Only Notes</li><li>Only Clock</li>
+        <li>Only Keyboard</li><li>Only Phone</li><li>Only Messages</li><li>Only Contacts</li>
+        <li>Only Play (video player)</li><li>Only Calculator</li><li>Only Applock</li><li>Only Voice Recorder</li>
+      </ul>
+      <p class="foot">Availability may vary by region. See each listing on Google Play for current status.</p>
 
-    <section>
-      <h2>What Each App Does & Why Permissions Are Needed</h2>
-      <p>Below are typical, on‑device uses of permissions. Exact prompts may differ by Android version and OEM.</p>
+      <h2>What Each App Does &amp; Why Permissions Are Needed</h2>
+      <p>Below are typical, on-device uses of permissions. Exact prompts may differ by Android version and OEM.</p>
 
-      <!-- Rest of the per-app sections remain unchanged -->
-    </section>
-
-    <section>
       <h2>Log Data</h2>
       <p>We do not collect or store logs on our servers. Crash or usage analytics are not integrated.</p>
-    </section>
 
-    <section>
-      <h2>Cookies & Trackers</h2>
-      <p>Our Android apps do not use cookies or embed third‑party trackers.</p>
-    </section>
+      <h2>Cookies &amp; Trackers</h2>
+      <p>Our Android apps do not use cookies or embed third-party trackers.</p>
 
-    <section>
       <h2>Security</h2>
-      <p>Because our apps collect no personal data, request no Internet permission, and avoid third‑party SDKs, there is no transmission of your information to us or to third parties. Your data remains on your device under your control.</p>
-    </section>
+      <p>Because our apps collect no personal data, request no Internet permission, and avoid third-party SDKs,
+        there is no transmission of your information to us or to third parties. Your data remains on your device
+        under your control.</p>
 
-    <section>
       <h2>Children’s Privacy</h2>
-      <p>Our apps are general‑audience utilities and do not knowingly collect information from children. As we collect no data, there is nothing to share with third parties.</p>
-    </section>
+      <p>Our apps are general-audience utilities and do not knowingly collect information from children. As we
+        collect no data, there is nothing to share with third parties.</p>
 
-    <section>
       <h2>Changes to This Privacy Policy</h2>
-      <p>We may update this Privacy Policy as our apps evolve. Any changes will appear on this page with an updated date at the top. Please review periodically.</p>
-    </section>
+      <p>We may update this Privacy Policy as our apps evolve. Any changes will appear on this page with an updated
+        date at the top. Please review periodically.</p>
 
-    <section>
       <h2>Contact Us</h2>
-      <p>Questions or suggestions? Reach us at:</p>
-      <ul>
-        <li><a href="mailto:onlyapp.contact@gmail.com">onlyapp.contact@gmail.com</a></li>
-        <li><a href="mailto:onlyapp.help@gmail.com">onlyapp.help@gmail.com</a></li>
-      </ul>
-      <p class="foot">Published on Google Play by <em>OnlyEssential</em>.</p>
-    </section>
+      <div class="k">
+        <p>Questions or suggestions? Reach us at:</p>
+        <p><a href="mailto:onlyapp.contact@gmail.com">onlyapp.contact@gmail.com</a></p>
+        <p><a href="mailto:onlyapp.help@gmail.com">onlyapp.help@gmail.com</a></p>
+      </div>
 
-    <hr />
-    <p class="foot">© <span id="year"></span> OnlyEssential</p>
-  </main>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+      <p class="foot">Published on Google Play by OnlyEssential.</p>
+      <p class="foot">© OnlyEssential</p>
+    </div>
+  </div>
 </body>
 </html>
