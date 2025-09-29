@@ -1,101 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy — Only Apps by OnlyEssential</title>
-  <meta name="description" content="Privacy Policy for Only Apps suite by OnlyEssential." />
+  <title>Privacy Policy – Only Essential</title>
+  <meta name="description" content="Privacy Policy for Only Essential Android apps" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f4f6f8;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #4b5563;
-      --border: #e5e7eb;
-      --ring: rgba(66, 133, 244, .35);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, .06);
-      --max: 860px;
+      --bg:#fafafa; --surface:#ffffff; --surface-variant:#f2f4f7;
+      --border:rgba(0,0,0,.08); --text:#1f1f1f; --muted:#5f6368;
+      --max:880px; --ring:0 0 0 3px rgba(66,133,244,.28)
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b0b10;
-        --card: #12151c;
-        --text: #e8eaed;
-        --muted: #b0b4ba;
-        --border: #232733;
-        --shadow: 0 16px 40px rgba(0,0,0,.5);
-      }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0b10; --surface:#12151c; --surface-variant:#171b24; --border:rgba(255,255,255,.12); --text:#e8eaed; --muted:#b0b4ba; }
     }
-    * { box-sizing: border-box }
-    html, body { height: 100% }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .wrap {
-      max-width: var(--max);
-      margin: 28px auto;
-      padding: 0 16px 48px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px 22px 28px;
-    }
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(24px, 3.5vw, 32px);
-      letter-spacing: -0.01em;
-    }
-    h2 {
-      margin: 28px 0 10px;
-      font-size: clamp(18px, 2.8vw, 22px);
-    }
-    p {
-      margin: 10px 0;
-      color: var(--muted);
-    }
-    ul {
-      margin: 8px 0 8px 22px;
-      padding: 0;
-    }
-    li {
-      margin: 6px 0;
-      color: var(--muted);
-    }
-    .meta {
-      color: var(--muted);
-      font-weight: 600;
-    }
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
-    a:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px var(--ring);
-    }
-    .foot {
-      margin-top: 28px;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    header{padding:18px 24px;text-align:center;border-bottom:1px solid var(--border);background:var(--surface-variant)}
+    h1{margin:0;font-size:clamp(26px,4vw,34px);font-weight:800}
+    main{max-width:var(--max);margin:0 auto;padding:32px 20px;display:grid;gap:28px}
+    h2{font-size:1.4rem;margin:1.2em 0 .6em;font-weight:700}
+    h3{font-size:1.15rem;margin:1em 0 .5em;font-weight:600}
+    p{margin:.4em 0}
+    ul{margin:.6em 0 .6em 1.4em;padding:0}
+    li{margin:.4em 0}
+    footer{text-align:center;font-size:.9rem;color:var(--muted);padding:32px 16px;border-top:1px solid var(--border)}
+    a{color:inherit;text-decoration:underline}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" role="article" aria-labelledby="pp-title">
-      <h1 id="pp-title">Privacy Policy</h1>
-      <p class="meta">Last updated: September 15, 2025</p>
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="muted">Last updated: September 15, 2025</p>
+  </header>
 
-      <p><strong>OnlyEssential</strong> (“us”, “we”, or “our”) operates the <em>Only Apps</em> suite of mobile applications (the “Services”). This Privacy Policy explains our approach to privacy across all apps published under our developer account on Google Play.</p>
+  <main>
+    <section>
+      <p><strong>OnlyEssential</strong> (“us”, “we”, or “our”) operates the <em>Only Apps</em> suite of mobile applications (the “Services”).  
+      This Privacy Policy explains our approach to privacy across all apps published under our developer account on Google Play.</p>
+    </section>
 
+    <section>
       <h2>Our Privacy Principles</h2>
       <ul>
         <li><strong>No personal data collection.</strong> Our apps do not collect, store, or share personal data.</li>
@@ -104,43 +52,60 @@
         <li><strong>No ads. No trackers. No analytics SDKs.</strong></li>
         <li><strong>Minimal permissions.</strong> When a permission is requested, it is strictly for on-device features and never used for tracking.</li>
       </ul>
+    </section>
 
+    <section>
       <h2>Applications Covered</h2>
-      <p>This policy applies to the complete Only Apps suite available on Google Play under OnlyEssential.</p>
-      <ul>
-        <li>Only Launcher</li><li>Only Gallery</li><li>Only Files</li><li>Only Music</li>
-        <li>Only Calendar</li><li>Only Camera</li><li>Only Notes</li><li>Only Clock</li>
-        <li>Only Keyboard</li><li>Only Phone</li><li>Only Messages</li><li>Only Contacts</li>
-        <li>Only Play (video player)</li><li>Only Calculator</li><li>Only Applock</li><li>Only Voice Recorder</li>
-      </ul>
-      <p class="foot">Availability may vary by region. See each listing on Google Play for current status.</p>
+      <p>This policy applies to the complete Only Apps suite available on Google Play under OnlyEssential:</p>
+      <p>Only Launcher · Only Gallery · Only Files · Only Music · Only Calendar · Only Camera · Only Notes · Only Clock · Only Keyboard · Only Phone · Only Messages · Only Contacts · Only Play (video player) · Only Calculator · Only Applock · Only Voice Recorder</p>
+      <p class="muted">Availability may vary by region. See each listing on Google Play for current status.</p>
+    </section>
 
-      <h2>What Each App Does &amp; Why Permissions Are Needed</h2>
+    <section>
+      <h2>What Each App Does & Why Permissions Are Needed</h2>
       <p>Below are typical, on-device uses of permissions. Exact prompts may differ by Android version and OEM.</p>
+    </section>
 
+    <section>
       <h2>Log Data</h2>
       <p>We do not collect or store logs on our servers. Crash or usage analytics are not integrated.</p>
+    </section>
 
-      <h2>Cookies &amp; Trackers</h2>
+    <section>
+      <h2>Cookies & Trackers</h2>
       <p>Our Android apps do not use cookies or embed third-party trackers.</p>
+    </section>
 
+    <section>
       <h2>Security</h2>
       <p>Because our apps collect no personal data, request no Internet permission, and avoid third-party SDKs, there is no transmission of your information to us or to third parties. Your data remains on your device under your control.</p>
+    </section>
 
+    <section>
       <h2>Children’s Privacy</h2>
       <p>Our apps are general-audience utilities and do not knowingly collect information from children. As we collect no data, there is nothing to share with third parties.</p>
+    </section>
 
+    <section>
       <h2>Changes to This Privacy Policy</h2>
       <p>We may update this Privacy Policy as our apps evolve. Any changes will appear on this page with an updated date at the top. Please review periodically.</p>
+    </section>
 
+    <section>
       <h2>Contact Us</h2>
       <p>Questions or suggestions? Reach us at:</p>
-      <p><a href="mailto:onlyapp.contact@gmail.com">onlyapp.contact@gmail.com</a></p>
-      <p><a href="mailto:onlyapp.help@gmail.com">onlyapp.help@gmail.com</a></p>
+      <p><a href="mailto:onlyapp.contact@gmail.com">onlyapp.contact@gmail.com</a><br>
+         <a href="mailto:onlyapp.help@gmail.com">onlyapp.help@gmail.com</a></p>
+      <p class="muted">Published on Google Play by OnlyEssential.</p>
+    </section>
+  </main>
 
-      <p class="foot">Published on Google Play by OnlyEssential.</p>
-      <p class="foot">© OnlyEssential</p>
-    </div>
-  </div>
+  <footer>
+    <p>© <span id="y"></span> OnlyEssential</p>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
