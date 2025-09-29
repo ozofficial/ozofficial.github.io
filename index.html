@@ -85,13 +85,19 @@
     }
     .card-link{position:absolute;inset:0;z-index:1;border-radius:inherit}
 
-    /* About & Contact */
+    /* Sections */
     .section{border-top:1px solid var(--border);background:var(--surface-variant)}
     .section-inner{max-width:var(--max);margin:0 auto;padding:32px 24px;display:grid;gap:18px}
     .section h2{margin:0;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em}
     .muted{color:var(--muted)}
     .pill{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:9999px;background:var(--surface);font-weight:700}
     .kudos{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Privacy content styling */
+    .policy{display:grid;gap:12px}
+    .policy h3{margin:10px 0 0;font-size:1.05rem}
+    .policy p, .policy li{color:var(--muted);line-height:1.55}
+    .policy ul{margin:0 0 0 18px;padding:0}
 
     footer{text-align:center;font-size:.9rem;color:var(--muted);margin:36px 0 24px}
 
@@ -116,6 +122,7 @@
       <nav class="topnav" aria-label="Primary">
         <a href="#apps" aria-label="Skip to apps">Apps</a>
         <a href="#about">About</a>
+        <a href="#privacy">Privacy</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -159,6 +166,34 @@
     </div>
   </section>
 
+  <!-- Privacy -->
+  <section id="privacy" class="section" aria-label="Privacy Policy">
+    <div class="section-inner">
+      <h2>Privacy Policy</h2>
+
+      <!-- Inline fallback content (will be replaced if external page loads) -->
+      <div id="privacy-fallback" class="policy">
+        <p>Only Essential apps are built to respect your privacy:</p>
+        <ul>
+          <li>No ads, no trackers, no analytics.</li>
+          <li>No accounts or sign-ups required.</li>
+          <li>Most apps work fully offline, keeping your data on your device.</li>
+          <li>We never sell or share personal information.</li>
+        </ul>
+        <p>Questions about privacy? Email us at
+          <a href="mailto:onlyapp.contact@gmail.com" target="_blank" rel="noopener">onlyapp.contact@gmail.com</a>.
+        </p>
+        <p>
+          You can also view the full policy here:
+          <a href="https://onlyessential.github.io/privacy.html" target="_blank" rel="noopener">Open full Privacy Policy</a>.
+        </p>
+      </div>
+
+      <!-- Container for external content -->
+      <div id="privacy-external" class="policy" hidden></div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="section" aria-label="Contact">
     <div class="section-inner">
@@ -170,7 +205,7 @@
   </section>
 
   <footer role="contentinfo">
-    <p>© <span id="y"></span> Only Essential · <a href="#about">About</a> · <a href="#contact">Contact</a></p>
+    <p>© <span id="y"></span> Only Essential · <a href="#about">About</a> · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a></p>
   </footer>
 
   <script>
@@ -215,7 +250,6 @@
     function pickDaily(list, n){
       const d = new Date(); const seed = d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
       const rand = seededRand(seed); list = list.slice();
-      // Fisher–Yates using seeded PRNG
       for(let i=list.length-1;i>0;i--){ const j = Math.floor(rand()*(i+1)); [list[i],list[j]]=[list[j],list[i]]; }
       return list.slice(0, Math.min(n, list.length));
     }
@@ -224,7 +258,6 @@
       const fixed = APPS.filter(a => FIXED_FEATURED.includes(a.name));
       const pool = APPS.filter(a => !FIXED_FEATURED.includes(a.name));
       const rotating = pickDaily(pool, 3);
-      // order: fixed (in FIXED_FEATURED order), then rotating
       const fixedOrdered = FIXED_FEATURED.map(n => fixed.find(a=>a.name===n)).filter(Boolean);
       return fixedOrdered.concat(rotating);
     }
@@ -249,7 +282,6 @@
       const termLc = term.trim().toLowerCase();
       const featuredSet = new Set(computeFeatured().map(a=>a.name));
 
-      // In "All": put featured first (with badge), then the rest.
       let list = APPS.slice();
 
       if (filter === "featured") {
@@ -265,7 +297,6 @@
         );
       }
 
-      // For ALL, sort featured to top (respect fixed order first)
       if (filter === "all") {
         const order = computeFeatured().map(a=>a.name);
         list.sort((a,b)=>{
@@ -308,8 +339,44 @@
     $reset.addEventListener('click', ()=>{ $q.value=''; setActiveFilter('all'); render('all',''); });
 
     // initial
-    setActiveFilter('all');            // default = All
-    render('all','');                  // render all apps
+    setActiveFilter('all');
+    render('all','');
+
+    // --------- Privacy: try to load external page and inject ---------
+    (async function loadExternalPrivacy(){
+      const externalUrl = 'https://onlyessential.github.io/privacy.html';
+      const $fallback = document.getElementById('privacy-fallback');
+      const $external = document.getElementById('privacy-external');
+      try {
+        const res = await fetch(externalUrl, {mode: 'cors'});
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const html = await res.text();
+
+        // Create a DOM to parse
+        const dom = new DOMParser().parseFromString(html, 'text/html');
+
+        // Strategy: prefer main content; else body; else raw html
+        let content =
+          dom.querySelector('main')?.innerHTML ||
+          dom.querySelector('article')?.innerHTML ||
+          dom.body?.innerHTML ||
+          '';
+
+        // Optional: sanitize very lightly by removing script tags
+        const tmp = document.createElement('div');
+        tmp.innerHTML = content;
+        tmp.querySelectorAll('script').forEach(s => s.remove());
+
+        if (tmp.textContent.trim().length > 40) { // Only replace if meaningful
+          $external.innerHTML = tmp.innerHTML;
+          $external.hidden = false;
+          $fallback.hidden = true;
+        }
+      } catch (e) {
+        // Swallow silently; fallback stays visible
+        // console.debug('Privacy external load failed:', e);
+      }
+    })();
   </script>
 </body>
 </html>
