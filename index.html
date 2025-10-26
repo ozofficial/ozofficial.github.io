@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OnlyZero – Simple Android Tools</title>
-  <meta name="description" content="OnlyZero unites your core Android apps into one beautiful, connected experience — fast, focused, and truly essential.." />
+  <meta name="description" content="OnlyZero unites your core Android apps into one beautiful, connected experience — fast, focused, and truly essential." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -117,7 +117,7 @@
 <body>
   <header>
     <div class="header-inner">
-      <h1 class="brand">Only Essential</h1>
+      <h1 class="brand">OnlyZero</h1>
       <p class="tagline">Simple • Private • Lightweight</p>
       <nav class="topnav" aria-label="Primary">
         <a href="#apps" aria-label="Skip to apps">Apps</a>
@@ -153,7 +153,7 @@
   </main>
 
   <!-- About -->
-  <section id="about" class="section" aria-label="About Only Essential">
+  <section id="about" class="section" aria-label="About OnlyZero">
     <div class="section-inner">
       <h2>About</h2>
       <p class="muted">OnlyZero brings together your most important Android experiences — calling, messaging, photos, music, calendar, and more — into one unified hub designed for simplicity, speed, and clarity.
@@ -175,7 +175,7 @@ It’s not about having more apps — it’s about having the right ones, workin
 
       <!-- Inline fallback content (will be replaced if external page loads) -->
       <div id="privacy-fallback" class="policy">
-        <p>Only Essential apps are built to respect your privacy:</p>
+        <p>OnlyZero apps are built to respect your privacy:</p>
         <ul>
           <li>No ads, no trackers, no analytics.</li>
           <li>No accounts or sign-ups required.</li>
@@ -207,7 +207,7 @@ It’s not about having more apps — it’s about having the right ones, workin
   </section>
 
   <footer role="contentinfo">
-    <p>© <span id="y"></span> Only Essential · <a href="#about">About</a> · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a></p>
+    <p>© <span id="y"></span> OnlyZero · <a href="#about">About</a> · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a></p>
   </footer>
 
   <script>
@@ -268,15 +268,15 @@ It’s not about having more apps — it’s about having the right ones, workin
 
     function cardHtml(app, isFeatured){
       return `
-      <article class="card" data-name="${app.name}" data-category="${app.cat}">
-        <div class="icon"><img loading="lazy" src="${app.icon}" alt="${app.name} icon"></div>
+      <article class="card" data-name="\${app.name}" data-category="\${app.cat}">
+        <div class="icon"><img loading="lazy" src="\${app.icon}" alt="\${app.name} icon"></div>
         <div class="content">
-          <h3 class="name">${app.name}</h3>
-          <div class="dev">Only Essential • <span class="chip">${app.cat}</span></div>
-          <p class="desc">${app.desc}</p>
+          <h3 class="name">\${app.name}</h3>
+          <div class="dev">OnlyZero • <span class="chip">\${app.cat}</span></div>
+          <p class="desc">\${app.desc}</p>
         </div>
-        ${isFeatured ? `<div class="badge">★ Featured</div>` : ``}
-        <a class="card-link" href="${playUrl(app.pkg)}" target="_blank" rel="noopener" aria-label="Open ${app.name} on Google Play"></a>
+        \${isFeatured ? `<div class="badge">★ Featured</div>` : ``}
+        <a class="card-link" href="\${playUrl(app.pkg)}" target="_blank" rel="noopener" aria-label="Open \${app.name} on Google Play"></a>
       </article>`;
     }
 
@@ -375,8 +375,7 @@ It’s not about having more apps — it’s about having the right ones, workin
           $fallback.hidden = true;
         }
       } catch (e) {
-        // Swallow silently; fallback stays visible
-        // console.debug('Privacy external load failed:', e);
+        // Fallback stays visible on error
       }
     })();
   </script>
