@@ -211,6 +211,12 @@ It’s not about having more apps — it’s about having the right ones, workin
   </footer>
 
   <script>
+    // --- branding assert (helps if an old cached HTML slips through)
+    document.addEventListener('DOMContentLoaded', () => {
+      const h1 = document.querySelector('.brand');
+      if (h1 && h1.textContent.trim() !== 'OnlyZero') h1.textContent = 'OnlyZero';
+    });
+
     // ---------- data ----------
     const APPS = [
       // media
@@ -268,15 +274,15 @@ It’s not about having more apps — it’s about having the right ones, workin
 
     function cardHtml(app, isFeatured){
       return `
-      <article class="card" data-name="\${app.name}" data-category="\${app.cat}">
-        <div class="icon"><img loading="lazy" src="\${app.icon}" alt="\${app.name} icon"></div>
+      <article class="card" data-name="${app.name}" data-category="${app.cat}">
+        <div class="icon"><img loading="lazy" src="${app.icon}" alt="${app.name} icon"></div>
         <div class="content">
-          <h3 class="name">\${app.name}</h3>
-          <div class="dev">OnlyZero • <span class="chip">\${app.cat}</span></div>
-          <p class="desc">\${app.desc}</p>
+          <h3 class="name">${app.name}</h3>
+          <div class="dev">OnlyZero • <span class="chip">${app.cat}</span></div>
+          <p class="desc">${app.desc}</p>
         </div>
-        \${isFeatured ? `<div class="badge">★ Featured</div>` : ``}
-        <a class="card-link" href="\${playUrl(app.pkg)}" target="_blank" rel="noopener" aria-label="Open \${app.name} on Google Play"></a>
+        ${isFeatured ? `<div class="badge">★ Featured</div>` : ``}
+        <a class="card-link" href="${playUrl(app.pkg)}" target="_blank" rel="noopener" aria-label="Open ${app.name} on Google Play"></a>
       </article>`;
     }
 
@@ -354,28 +360,23 @@ It’s not about having more apps — it’s about having the right ones, workin
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const html = await res.text();
 
-        // Create a DOM to parse
         const dom = new DOMParser().parseFromString(html, 'text/html');
-
-        // Strategy: prefer main content; else body; else raw html
         let content =
           dom.querySelector('main')?.innerHTML ||
           dom.querySelector('article')?.innerHTML ||
-          dom.body?.innerHTML ||
-          '';
+          dom.body?.innerHTML || '';
 
-        // Optional: sanitize very lightly by removing script tags
         const tmp = document.createElement('div');
         tmp.innerHTML = content;
         tmp.querySelectorAll('script').forEach(s => s.remove());
 
-        if (tmp.textContent.trim().length > 40) { // Only replace if meaningful
+        if (tmp.textContent.trim().length > 40) {
           $external.innerHTML = tmp.innerHTML;
           $external.hidden = false;
           $fallback.hidden = true;
         }
       } catch (e) {
-        // Fallback stays visible on error
+        // fallback stays visible
       }
     })();
   </script>
