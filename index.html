@@ -38,42 +38,44 @@ body{
 
 .header{
   text-align:center;
-  padding:28px 16px 12px;
+  padding:26px 16px 12px;
 }
 
 .header h1{
   font-size:26px;
   font-weight:500;
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 
 /* SEARCH */
 
 .search-section{
-  max-width:720px;
+  max-width:680px;
   margin:0 auto 12px;
   padding:0 16px;
 }
 
 .search-section input{
   width:100%;
-  padding:13px 18px;
+  padding:12px 18px;
   border-radius:24px;
   border:1px solid #dadce0;
   background:var(--card);
   font-size:14px;
   outline:none;
+  transition:.2s ease;
 }
 
 .search-section input:focus{
   border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(246,76,23,.12);
 }
 
 /* FILTER */
 
 .filter{
   text-align:center;
-  margin-bottom:32px;
+  margin-bottom:24px;
 }
 
 .filter button{
@@ -84,6 +86,7 @@ body{
   background:#e8eaed;
   font-size:13px;
   cursor:pointer;
+  transition:.2s ease;
 }
 
 .filter button.active{
@@ -93,19 +96,23 @@ body{
 
 /* ===== FEATURED SECTION ===== */
 
-.section-title{
+.section-container{
   max-width:1200px;
-  margin:0 auto 16px;
+  margin:0 auto;
   padding:0 24px;
+}
+
+.section-title{
   font-size:18px;
   font-weight:500;
+  margin-bottom:14px;
 }
 
 .featured-row{
   display:flex;
-  gap:16px;
+  gap:14px;
   overflow-x:auto;
-  padding:0 24px 16px;
+  padding-bottom:12px;
   scroll-snap-type:x mandatory;
 }
 
@@ -114,17 +121,24 @@ body{
 }
 
 .featured-item{
-  flex:0 0 150px;
+  flex:0 0 135px;
   scroll-snap-align:start;
+  cursor:pointer;
 }
 
 .featured-thumb{
   width:100%;
-  height:150px;
-  border-radius:16px;
+  height:135px;
+  border-radius:18px;
   overflow:hidden;
   background:var(--card);
-  box-shadow:0 1px 3px rgba(0,0,0,.1);
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  transition:.2s ease;
+}
+
+.featured-item:hover .featured-thumb{
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
 }
 
 .featured-thumb img{
@@ -149,8 +163,8 @@ body{
 
 .container{
   max-width:1200px;
-  margin:auto;
-  padding:0 24px 60px;
+  margin:28px auto 60px;
+  padding:0 24px;
 }
 
 .grid{
@@ -162,13 +176,14 @@ body{
 .card{
   background:var(--card);
   padding:18px;
-  border-radius:16px;
-  box-shadow:0 1px 3px rgba(0,0,0,.1);
-  transition:.15s ease;
+  border-radius:18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  transition:.2s ease;
 }
 
 .card:hover{
-  box-shadow:0 4px 10px rgba(0,0,0,.12);
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 .app-top{
@@ -177,9 +192,9 @@ body{
 }
 
 .app-icon{
-  width:56px;
-  height:56px;
-  border-radius:14px;
+  width:58px;
+  height:58px;
+  border-radius:16px;
   overflow:hidden;
 }
 
@@ -227,7 +242,7 @@ footer{
 
 @media(max-width:768px){
   .featured-item{
-    flex:0 0 130px;
+    flex:0 0 120px;
   }
 }
 </style>
@@ -248,8 +263,10 @@ footer{
   </div>
 </div>
 
-<h2 class="section-title">Featured Apps</h2>
-<div class="featured-row" id="featuredRow"></div>
+<div class="section-container">
+  <div class="section-title">Featured Apps</div>
+  <div class="featured-row" id="featuredRow"></div>
+</div>
 
 <div class="container">
   <div class="grid" id="appGrid"></div>
