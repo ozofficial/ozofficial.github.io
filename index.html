@@ -6,7 +6,6 @@
 <title>OZ Lab – Android Apps</title>
 <meta name="description" content="Official developer page for OZ Lab Android applications.">
 
-<!-- Performance -->
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 
 <style>
@@ -36,15 +35,12 @@ body{
 
 /* HEADER */
 header{
-  background:#fff;
+  background:var(--card);
   padding:10px 20px;
   box-shadow:0 1px 4px rgba(0,0,0,0.05);
   position:sticky;
   top:0;
   z-index:1000;
-}
-@media (prefers-color-scheme: dark){
-  header{background:#1e1e1e;}
 }
 
 header h1{font-size:18px;}
@@ -120,28 +116,62 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
   gap:12px;
 }
 
+/* ICON */
 .app-icon{
-  width:52px;
-  height:52px;
-  border-radius:14px;
-  background:#ffffff;   /* neutral */
+  width:clamp(48px,5vw,60px);
+  height:clamp(48px,5vw,60px);
+  border-radius:16px;
+  background:#ffffff;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
+  position:relative;
   box-shadow:0 1px 4px rgba(0,0,0,0.08);
 }
 
+/* Skeleton */
+.app-icon::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    #eee 25%,
+    #ddd 50%,
+    #eee 75%
+  );
+  background-size:200% 100%;
+  animation:skeleton 1.2s infinite;
+}
+
+@keyframes skeleton{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+
+.app-icon.loaded::before{
+  display:none;
+}
+
+/* Image */
 .app-icon img{
   width:100%;
   height:100%;
-  object-fit:cover;     /* keeps shape */
+  object-fit:cover;
+  opacity:0;
+  transition:opacity .3s ease;
 }
 
+.app-icon.loaded img{
+  opacity:1;
+}
+
+/* Fallback */
 .fallback-icon{
   display:none;
-  font-size:20px;
-  color:#F64C17;
+  font-size:22px;
+  color:var(--accent);
 }
 
 .card h3{font-size:14px;}
@@ -201,7 +231,6 @@ footer a{
 
 <footer>
   © 2026 OZ Lab ·
-  <a href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Google Play</a> ·
   <a href="privacy.html">Privacy</a> ·
   <a href="terms.html">Terms</a> ·
   <a href="support.html">Support</a> ·
@@ -242,7 +271,7 @@ function createCard(app){
   card.innerHTML = `
     <div class="app-top">
       <div class="app-icon">
-        <img src="${app[6]}" alt="${app[0]}" loading="lazy">
+        <img alt="${app[0]}" loading="lazy" decoding="async">
         <span class="fallback-icon">${app[1]}</span>
       </div>
       <div>
@@ -258,20 +287,28 @@ function createCard(app){
     </div>
   `;
 
- const img = card.querySelector("img");
-const fallback = card.querySelector(".fallback-icon");
+  const img = card.querySelector(".app-icon img");
+  const iconContainer = card.querySelector(".app-icon");
+  const fallback = card.querySelector(".fallback-icon");
 
-img.onerror = () => {
-  img.remove();
-  fallback.style.display = "block";
-};
+  img.src = app[6];
+
+  img.onload = async () => {
+    try { await img.decode(); } catch(e){}
+    iconContainer.classList.add("loaded");
+  };
+
+  img.onerror = () => {
+    img.remove();
+    fallback.style.display = "block";
+    iconContainer.classList.add("loaded");
+  };
 
   return card;
 }
 
 apps.forEach(app => grid.appendChild(createCard(app)));
 
-/* Search */
 document.getElementById("searchInput").addEventListener("input", e=>{
   const value = e.target.value.toLowerCase();
   document.querySelectorAll(".card").forEach(card=>{
@@ -279,7 +316,6 @@ document.getElementById("searchInput").addEventListener("input", e=>{
   });
 });
 
-/* Filter */
 document.querySelectorAll(".filter button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll(".filter button").forEach(b=>b.classList.remove("active"));
