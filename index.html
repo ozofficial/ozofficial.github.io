@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OZ Lab – Android Apps</title>
-<meta name="description" content="Explore all OZ Lab Android apps. Clean, minimal Android tools.">
+<meta name="description" content="Official developer page for OZ Lab Android applications.">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 
 <style>
 :root{
@@ -25,14 +28,15 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:Roboto,-apple-system,BlinkMacSystemFont,sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.5;
 }
 
 /* HEADER */
 header{
-  background:white;
+  background:#fff;
   padding:10px 20px;
   box-shadow:0 1px 4px rgba(0,0,0,0.05);
   position:sticky;
@@ -42,6 +46,7 @@ header{
 @media (prefers-color-scheme: dark){
   header{background:#1e1e1e;}
 }
+
 header h1{font-size:18px;}
 header p{font-size:12px;opacity:.7;margin-top:2px;}
 
@@ -50,20 +55,13 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
   padding:14px 20px 6px;
   text-align:center;
 }
-.top-title h2{
-  font-size:20px;
-  font-weight:600;
-}
-.top-title p{
-  font-size:13px;
-  opacity:.6;
-  margin-top:3px;
-}
+.top-title h2{font-size:20px;}
+.top-title p{font-size:13px;opacity:.6;margin-top:3px;}
 
 /* SEARCH */
 .search{
   max-width:600px;
-  margin:8px auto 10px;
+  margin:8px auto 12px;
 }
 .search input{
   width:100%;
@@ -86,11 +84,10 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
   background:#e8eaed;
   cursor:pointer;
   font-size:13px;
-  font-weight:500;
 }
 .filter button.active{
   background:var(--accent);
-  color:white;
+  color:#fff;
 }
 
 /* GRID */
@@ -122,6 +119,8 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
   display:flex;
   gap:12px;
 }
+
+/* ICON */
 .app-icon{
   width:52px;
   height:52px;
@@ -130,8 +129,20 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
   display:flex;
   align-items:center;
   justify-content:center;
-  color:white;
+  overflow:hidden;
+  position:relative;
+}
+
+.app-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.fallback-icon{
+  position:absolute;
   font-size:20px;
+  color:#fff;
 }
 
 .card h3{font-size:14px;}
@@ -140,34 +151,11 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
 
 .badge{margin-top:10px;}
 .badge img{
-  height:32px;
+  height:30px;
   transition:.2s ease;
 }
 .badge img:hover{
   transform:scale(1.05);
-}
-
-/* PRIVACY SECTION */
-.privacy{
-  margin-top:40px;
-  background:var(--card);
-  padding:30px 16px;
-  border-top:1px solid rgba(0,0,0,0.05);
-}
-.privacy h2{
-  font-size:16px;
-  margin-bottom:12px;
-}
-.privacy h3{
-  font-size:14px;
-  margin-top:14px;
-  margin-bottom:6px;
-}
-.privacy p{
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:8px;
-  opacity:.85;
 }
 
 /* FOOTER */
@@ -177,6 +165,10 @@ footer{
   text-align:center;
   font-size:13px;
   opacity:.6;
+}
+footer a{
+  color:var(--accent);
+  text-decoration:none;
 }
 </style>
 </head>
@@ -198,10 +190,10 @@ footer{
 </div>
 
 <div class="filter">
-  <button class="active" onclick="filterApps(event,'all')">All</button>
-  <button onclick="filterApps(event,'media')">Media</button>
-  <button onclick="filterApps(event,'tools')">Tools</button>
-  <button onclick="filterApps(event,'system')">System</button>
+  <button class="active" data-category="all">All</button>
+  <button data-category="media">Media</button>
+  <button data-category="tools">Tools</button>
+  <button data-category="system">System</button>
 </div>
 
 <div class="container">
@@ -210,56 +202,49 @@ footer{
 
 <footer>
   © 2026 OZ Lab ·
-  <a href="https://play.google.com/store/apps/dev?id=6324446257194202838&hl=en_IN" target="_blank">Google Play</a> ·
+  <a href="https://play.google.com/store/apps/dev?id=6324446257194202838" target="_blank">Google Play</a> ·
   <a href="privacy.html">Privacy</a> ·
   <a href="terms.html">Terms</a> ·
   <a href="support.html">Support</a> ·
   <a href="contact.html">Contact</a>
 </footer>
 
-<script>
+<script defer>
 const apps = [
-["Only Phone","📞","Minimal dialer & call management","tools","10K+","com.andmobi.phone"],
-["Only Gallery","🖼️","Fast photo & video gallery","media","50K+","com.andmobi.gallery"],
-["Zero Music","🎵","Lightweight music player","media","10K+","com.vidxlab.music"],
-["HD Video Player – Zero","🎬","Smooth HD playback","media","100K+","com.vidxlab.hdplayer"],
-["Only Contacts","👤","Simple contact manager","system","10K+","com.andmobi.contacts"],
-["Only Home","🏠","Minimal launcher","system","10K+","com.andmobi.home"],
-["Only Recorder","🎙️","Clean voice recorder","tools","10K+","com.andmobi.voicerecorder"],
-["Only Calculator","🧮","Simple daily calculator","tools","50K+","com.andmobi.math"],
-["Only Paint","🎨","Light drawing app","tools","10K+","com.andmobi.paint"],
-["Only Messages","💬","Distraction-free messaging","system","10K+","com.andmobi.messages"],
-["Only Keyboard","⌨️","Clean typing experience","system","10K+","com.andmobi.keyboard"],
-["Only Clock","⏰","Minimal alarm & clock","system","10K+","com.andmobi.clock"],
-["Only Notes","📝","Quick notes","tools","10K+","com.andmobi.notes"],
-["Only Calendar","📅","Simple planner","system","10K+","com.andmobi.calendar"],
-["Only Camera","📷","Fast camera","media","10K+","com.andmobi.camera"],
-["Only Music","🎧","Music playback","media","10K+","com.andmobi.music"],
-["Only File Manager","📂","File explorer","tools","10K+","com.andmobi.filemanager"],
-["Only Play","▶️","Minimal video player","media","10K+","com.andmobi.onlyplay"],
-["Only App Locker","🔒","Secure app locking","system","10K+","com.andmobi.applocker"]
+["Only Phone","📞","Minimal dialer & call management","tools","10K+","com.andmobi.phone","icons/only-phone.png"],
+["Only Gallery","🖼️","Fast photo & video gallery","media","50K+","com.andmobi.gallery","icons/only-gallery.png"],
+["Zero Music","🎵","Lightweight music player","media","10K+","com.vidxlab.music","icons/zero-music.png"],
+["HD Video Player – Zero","🎬","Smooth HD playback","media","100K+","com.vidxlab.hdplayer","icons/hd-player.png"],
+["Only Contacts","👤","Simple contact manager","system","10K+","com.andmobi.contacts","icons/only-contacts.png"],
+["Only Home","🏠","Minimal launcher","system","10K+","com.andmobi.home","icons/only-home.png"],
+["Only Recorder","🎙️","Clean voice recorder","tools","10K+","com.andmobi.voicerecorder","icons/only-recorder.png"],
+["Only Calculator","🧮","Simple daily calculator","tools","50K+","com.andmobi.math","icons/only-calculator.png"],
+["Only Paint","🎨","Light drawing app","tools","10K+","com.andmobi.paint","icons/only-paint.png"],
+["Only Messages","💬","Distraction-free messaging","system","10K+","com.andmobi.messages","icons/only-messages.png"],
+["Only Keyboard","⌨️","Clean typing experience","system","10K+","com.andmobi.keyboard","icons/only-keyboard.png"],
+["Only Clock","⏰","Minimal alarm & clock","system","10K+","com.andmobi.clock","icons/only-clock.png"],
+["Only Notes","📝","Quick notes","tools","10K+","com.andmobi.notes","icons/only-notes.png"],
+["Only Calendar","📅","Simple planner","system","10K+","com.andmobi.calendar","icons/only-calendar.png"],
+["Only Camera","📷","Fast camera","media","10K+","com.andmobi.camera","icons/only-camera.png"],
+["Only Music","🎧","Music playback","media","10K+","com.andmobi.music","icons/only-music.png"],
+["Only File Manager","📂","File explorer","tools","10K+","com.andmobi.filemanager","icons/only-filemanager.png"],
+["Only Play","▶️","Minimal video player","media","10K+","com.andmobi.onlyplay","icons/only-play.png"],
+["Only App Locker","🔒","Secure app locking","system","10K+","com.andmobi.applocker","icons/only-applocker.png"]
 ];
 
-const grid=document.getElementById("appGrid");
+const grid = document.getElementById("appGrid");
 
-apps.forEach(app=>{
-  const card=document.createElement("div");
-  card.className="card";
-  card.setAttribute("data-name",app[0].toLowerCase());
-  card.setAttribute("data-category",app[3]);
+function createCard(app){
+  const card = document.createElement("div");
+  card.className = "card";
+  card.dataset.name = app[0].toLowerCase();
+  card.dataset.category = app[3];
 
-  // Dynamic Play icon attempt (commonly used pattern)
-  const iconUrl = `https://play-lh.googleusercontent.com/${app[5]}`;
-
-  card.innerHTML=`
+  card.innerHTML = `
     <div class="app-top">
-      <div class="app-icon" style="padding:0;overflow:hidden;">
-        <img 
-          src="${iconUrl}" 
-          alt="${app[0]}" 
-          style="width:100%;height:100%;object-fit:cover;border-radius:12px;"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='${app[1]}'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.style.background='var(--accent)'; this.parentElement.style.color='white';"
-        >
+      <div class="app-icon">
+        <img src="${app[6]}" alt="${app[0]}" loading="lazy">
+        <span class="fallback-icon">${app[1]}</span>
       </div>
       <div>
         <h3>${app[0]}</h3>
@@ -269,29 +254,41 @@ apps.forEach(app=>{
     </div>
     <div class="badge">
       <a href="https://play.google.com/store/apps/details?id=${app[5]}" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" loading="lazy">
       </a>
     </div>
   `;
-  grid.appendChild(card);
-});
+
+  const img = card.querySelector("img");
+  img.onerror = () => {
+    img.remove();
+  };
+
+  return card;
+}
+
+apps.forEach(app => grid.appendChild(createCard(app)));
 
 /* Search */
-document.getElementById("searchInput").addEventListener("keyup",function(){
-  const v=this.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(c=>{
-    c.style.display=c.dataset.name.includes(v)?"block":"none";
+document.getElementById("searchInput").addEventListener("input", e=>{
+  const value = e.target.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display = card.dataset.name.includes(value) ? "" : "none";
   });
 });
 
 /* Filter */
-function filterApps(event,cat){
-  document.querySelectorAll(".filter button").forEach(btn=>btn.classList.remove("active"));
-  event.target.classList.add("active");
-  document.querySelectorAll(".card").forEach(c=>{
-    c.style.display=(cat==="all"||c.dataset.category===cat)?"block":"none";
+document.querySelectorAll(".filter button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const category = btn.dataset.category;
+
+    document.querySelectorAll(".card").forEach(card=>{
+      card.style.display = (category === "all" || card.dataset.category === category) ? "" : "none";
+    });
   });
-}
+});
 </script>
 
 </body>
