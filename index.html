@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OZ Lab – Android Apps</title>
-<meta name="description" content="Official developer page for OZ Lab Android applications.">
+<meta name="description" content="Official developer page for OZ Lab Android applications. Clean, minimal Android tools.">
 
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 
@@ -33,49 +33,45 @@ body{
   line-height:1.5;
 }
 
-/* HEADER */
-header{
-  background:var(--card);
-  padding:10px 20px;
-  box-shadow:0 1px 4px rgba(0,0,0,0.05);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-header h1{font-size:18px;}
-header p{font-size:12px;opacity:.7;margin-top:2px;}
-
 /* TITLE */
 .top-title{
-  padding:14px 20px 6px;
+  padding:40px 20px 16px;
   text-align:center;
 }
-.top-title h2{font-size:20px;}
-.top-title p{font-size:13px;opacity:.6;margin-top:3px;}
+.top-title h2{
+  font-size:26px;
+  font-weight:600;
+}
+.top-title p{
+  font-size:14px;
+  opacity:.6;
+  margin-top:6px;
+}
 
 /* SEARCH */
 .search{
   max-width:600px;
-  margin:8px auto 12px;
+  margin:12px auto 16px;
 }
 .search input{
   width:100%;
-  padding:12px 14px;
-  border-radius:10px;
+  padding:13px 16px;
+  border-radius:12px;
   border:1px solid #dadce0;
   font-size:14px;
+  background:var(--card);
+  color:var(--text);
 }
 
 /* FILTER */
 .filter{
   text-align:center;
-  margin-bottom:10px;
+  margin-bottom:18px;
 }
 .filter button{
   margin:4px;
-  padding:6px 14px;
-  border-radius:18px;
+  padding:7px 16px;
+  border-radius:20px;
   border:none;
   background:#e8eaed;
   cursor:pointer;
@@ -90,37 +86,44 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
 .container{
   max-width:1200px;
   margin:auto;
-  padding:10px 16px 20px;
+  padding:0 16px 40px;
 }
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
 }
 
 /* CARD */
 .card{
   background:var(--card);
-  padding:14px;
-  border-radius:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
-  transition:.2s ease;
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  transition:.25s ease;
+  opacity:0;
+  transform:translateY(10px);
+  animation:fadeUp .4s ease forwards;
 }
 .card:hover{
-  box-shadow:0 4px 14px rgba(0,0,0,0.12);
-  transform:translateY(-3px);
+  box-shadow:0 8px 22px rgba(0,0,0,0.12);
+  transform:translateY(-4px);
+}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0);}
 }
 
 .app-top{
   display:flex;
-  gap:12px;
+  gap:14px;
 }
 
 /* ICON */
 .app-icon{
-  width:clamp(48px,5vw,60px);
-  height:clamp(48px,5vw,60px);
-  border-radius:16px;
+  width:clamp(54px,5vw,70px);
+  height:clamp(54px,5vw,70px);
+  border-radius:20px;
   background:#ffffff;
   display:flex;
   align-items:center;
@@ -135,62 +138,46 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    90deg,
-    #eee 25%,
-    #ddd 50%,
-    #eee 75%
-  );
+  background:linear-gradient(90deg,#eee 25%,#ddd 50%,#eee 75%);
   background-size:200% 100%;
   animation:skeleton 1.2s infinite;
 }
-
 @keyframes skeleton{
   0%{background-position:200% 0}
   100%{background-position:-200% 0}
 }
+.app-icon.loaded::before{display:none;}
 
-.app-icon.loaded::before{
-  display:none;
-}
-
-/* Image */
 .app-icon img{
   width:100%;
   height:100%;
   object-fit:cover;
   opacity:0;
-  transition:opacity .3s ease;
+  transition:opacity .35s ease;
 }
+.app-icon.loaded img{opacity:1;}
 
-.app-icon.loaded img{
-  opacity:1;
-}
-
-/* Fallback */
 .fallback-icon{
   display:none;
-  font-size:22px;
+  font-size:24px;
   color:var(--accent);
 }
 
-.card h3{font-size:14px;}
-.card p{font-size:12px;opacity:.7;margin-top:3px;}
-.install{font-size:11px;opacity:.6;margin-top:4px;}
+/* TEXT */
+.card h3{font-size:16px;}
+.card p{font-size:13px;opacity:.75;margin-top:4px;}
+.install{font-size:12px;opacity:.6;margin-top:6px;}
 
-.badge{margin-top:10px;}
+.badge{margin-top:14px;}
 .badge img{
-  height:30px;
+  height:34px;
   transition:.2s ease;
 }
-.badge img:hover{
-  transform:scale(1.05);
-}
+.badge img:hover{transform:scale(1.06);}
 
 /* FOOTER */
 footer{
-  margin-top:20px;
-  padding:20px;
+  padding:30px;
   text-align:center;
   font-size:13px;
   opacity:.6;
@@ -198,19 +185,15 @@ footer{
 footer a{
   color:var(--accent);
   text-decoration:none;
+  margin:0 8px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>OZ Lab</h1>
-  <p>Essential Apps. Zero Clutter.</p>
-</header>
-
 <div class="top-title">
-  <h2>All Apps</h2>
+  <h2>OZ Lab Apps</h2>
   <p>Fast. Clean. Reliable Android tools.</p>
 </div>
 
@@ -262,13 +245,14 @@ const apps = [
 
 const grid = document.getElementById("appGrid");
 
-function createCard(app){
-  const card = document.createElement("div");
-  card.className = "card";
-  card.dataset.name = app[0].toLowerCase();
-  card.dataset.category = app[3];
+apps.forEach((app,i)=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.style.animationDelay=`${i*40}ms`;
+  card.dataset.name=app[0].toLowerCase();
+  card.dataset.category=app[3];
 
-  card.innerHTML = `
+  card.innerHTML=`
     <div class="app-top">
       <div class="app-icon">
         <img alt="${app[0]}" loading="lazy" decoding="async">
@@ -287,32 +271,30 @@ function createCard(app){
     </div>
   `;
 
-  const img = card.querySelector(".app-icon img");
-  const iconContainer = card.querySelector(".app-icon");
-  const fallback = card.querySelector(".fallback-icon");
+  const img=card.querySelector(".app-icon img");
+  const iconContainer=card.querySelector(".app-icon");
+  const fallback=card.querySelector(".fallback-icon");
 
-  img.src = app[6];
+  img.src=app[6];
 
-  img.onload = async () => {
-    try { await img.decode(); } catch(e){}
+  img.onload=async()=>{
+    try{await img.decode();}catch(e){}
     iconContainer.classList.add("loaded");
   };
 
-  img.onerror = () => {
+  img.onerror=()=>{
     img.remove();
-    fallback.style.display = "block";
+    fallback.style.display="block";
     iconContainer.classList.add("loaded");
   };
 
-  return card;
-}
+  grid.appendChild(card);
+});
 
-apps.forEach(app => grid.appendChild(createCard(app)));
-
-document.getElementById("searchInput").addEventListener("input", e=>{
-  const value = e.target.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card=>{
-    card.style.display = card.dataset.name.includes(value) ? "" : "none";
+document.getElementById("searchInput").addEventListener("input",e=>{
+  const v=e.target.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display=c.dataset.name.includes(v)?"":"none";
   });
 });
 
@@ -320,10 +302,9 @@ document.querySelectorAll(".filter button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll(".filter button").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    const category = btn.dataset.category;
-
-    document.querySelectorAll(".card").forEach(card=>{
-      card.style.display = (category === "all" || card.dataset.category === category) ? "" : "none";
+    const cat=btn.dataset.category;
+    document.querySelectorAll(".card").forEach(c=>{
+      c.style.display=(cat==="all"||c.dataset.category===cat)?"":"none";
     });
   });
 });
