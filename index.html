@@ -1,137 +1,230 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OZ Lab Apps</title>
-<meta name="description" content="All OZ Lab Android apps on Google Play.">
+<title>OZ Lab – Android Apps</title>
+<meta name="description" content="All OZ Lab Android apps. Clean, minimal, privacy-first tools.">
+
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    background: #f9f9f9;
-    color: #222;
+:root{
+  --accent:#F64C17;
+  --bg:#f5f6f8;
+  --card:#ffffff;
+  --text:#1c1c1c;
+}
+
+body.dark{
+  --bg:#111;
+  --card:#1c1c1c;
+  --text:#f5f5f5;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s ease;
+}
+
+header{
+  text-align:center;
+  padding:60px 20px 30px;
+}
+
+h1{
+  font-size:42px;
+  font-weight:700;
+}
+
+header p{
+  margin-top:10px;
+  font-size:18px;
+  opacity:.7;
+}
+
+.toggle{
+  margin-top:20px;
+  cursor:pointer;
+  font-size:14px;
+  color:var(--accent);
+}
+
+.search{
+  max-width:500px;
+  margin:30px auto;
+}
+
+.search input{
+  width:100%;
+  padding:12px 16px;
+  border-radius:30px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  transition:.25s ease;
+  opacity:0;
+  transform:translateY(15px);
+  animation:fadeUp .5s forwards;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #F64C17;
-  }
-  .app-list {
-    max-width: 700px;
-    margin: auto;
-  }
-  .app-item {
-    margin: 12px 0;
-    padding: 12px;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-  .app-item a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #F64C17;
-  }
-  .footer {
-    text-align: center;
-    margin-top: 60px;
-    font-size: 14px;
-    color: #555;
-  }
+}
+
+.app-top{
+  display:flex;
+  gap:15px;
+}
+
+.app-icon{
+  width:64px;
+  height:64px;
+  border-radius:16px;
+}
+
+.app-info h3{
+  margin:0;
+  font-size:18px;
+}
+
+.app-info p{
+  margin-top:6px;
+  font-size:14px;
+  opacity:.7;
+}
+
+.badge{
+  margin-top:15px;
+}
+
+.badge img{
+  height:40px;
+}
+
+footer{
+  text-align:center;
+  padding:60px 20px;
+  font-size:14px;
+  opacity:.6;
+}
 </style>
 </head>
+
 <body>
 
-<h1>OZ Lab – All Android Apps</h1>
+<header>
+  <h1>OZ Lab</h1>
+  <p>Essential Apps. Zero Clutter.</p>
+  <div class="toggle" onclick="toggleDark()">Toggle Dark Mode</div>
+</header>
 
-<div class="app-list">
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.phone" target="_blank">Only Phone</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.gallery" target="_blank">Only Gallery</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.vidxlab.music" target="_blank">Zero Music</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.vidxlab.hdplayer" target="_blank">HD Video Player & Music – Zero</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.contacts" target="_blank">Only Contacts</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.home" target="_blank">Only Home</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.voicerecorder" target="_blank">Only Recorder</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.math" target="_blank">Only Calculator</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.paint" target="_blank">Only Paint</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.messages" target="_blank">Only Messages</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.keyboard" target="_blank">Only Keyboard</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.clock" target="_blank">Only Clock</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.notes" target="_blank">Only Notes</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.calendar" target="_blank">Only Calendar</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.camera" target="_blank">Only Camera</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.music" target="_blank">Only Music</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.filemanager" target="_blank">Only File Manager</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.onlyplay" target="_blank">Only Play</a>
-  </div>
-
-  <div class="app-item">
-    <a href="https://play.google.com/store/apps/details?id=com.andmobi.applocker" target="_blank">Only App Locker</a>
-  </div>
-
+<div class="search">
+  <input type="text" id="searchInput" placeholder="Search apps...">
 </div>
 
-<div class="footer">
-  Developer page:  
+<div class="container">
+  <div class="grid" id="appGrid">
+
+<!-- App Cards -->
+
+<script>
+const apps = [
+["Only Phone","com.andmobi.phone","Minimal dialer & call management"],
+["Only Gallery","com.andmobi.gallery","Fast photo & video gallery"],
+["Zero Music","com.vidxlab.music","Lightweight music player"],
+["HD Video Player – Zero","com.vidxlab.hdplayer","Smooth HD video playback"],
+["Only Contacts","com.andmobi.contacts","Simple contact manager"],
+["Only Home","com.andmobi.home","Minimal launcher"],
+["Only Recorder","com.andmobi.voicerecorder","Clean voice recorder"],
+["Only Calculator","com.andmobi.math","Simple daily calculator"],
+["Only Paint","com.andmobi.paint","Light drawing app"],
+["Only Messages","com.andmobi.messages","Distraction-free messaging"],
+["Only Keyboard","com.andmobi.keyboard","Clean typing experience"],
+["Only Clock","com.andmobi.clock","Minimal alarm & clock"],
+["Only Notes","com.andmobi.notes","Quick note taking"],
+["Only Calendar","com.andmobi.calendar","Simple schedule planner"],
+["Only Camera","com.andmobi.camera","Fast camera app"],
+["Only Music","com.andmobi.music","Music playback app"],
+["Only File Manager","com.andmobi.filemanager","Light file explorer"],
+["Only Play","com.andmobi.onlyplay","Video player app"],
+["Only App Locker","com.andmobi.applocker","Secure app locking"]
+];
+
+const grid = document.currentScript.parentElement;
+
+apps.forEach((app,i)=>{
+  const icon = `https://play-lh.googleusercontent.com/` + app[1];
+  const card = document.createElement("div");
+  card.className="card";
+  card.style.animationDelay = (i*0.05)+"s";
+  card.setAttribute("data-name",app[0].toLowerCase());
+
+  card.innerHTML = `
+    <div class="app-top">
+      <img class="app-icon" src="${icon}" onerror="this.style.display='none'">
+      <div class="app-info">
+        <h3>${app[0]}</h3>
+        <p>${app[2]}</p>
+      </div>
+    </div>
+    <div class="badge">
+      <a href="https://play.google.com/store/apps/details?id=${app[1]}" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
+      </a>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+document.getElementById("searchInput").addEventListener("keyup",function(){
+  const value = this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display = card.dataset.name.includes(value) ? "block" : "none";
+  });
+});
+
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+</script>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 OZ Lab · 
   <a href="https://play.google.com/store/apps/dev?id=6324446257194202838&hl=en_IN" target="_blank">
-    https://play.google.com/store/apps/dev?id=6324446257194202838
+    View Developer Page
   </a>
-</div>
+</footer>
 
 </body>
 </html>
