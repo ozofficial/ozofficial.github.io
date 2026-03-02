@@ -38,15 +38,15 @@ body{
 /* HERO */
 .header{
   text-align:center;
-  padding:28px 16px 12px;
+  padding:32px 16px 16px;
 }
 
 .header h1{
   font-size:28px;
   font-weight:600;
+  margin-bottom:18px;
   position:relative;
   display:inline-block;
-  margin-bottom:18px;
 }
 
 .header h1::after{
@@ -59,21 +59,6 @@ body{
   height:3px;
   background:linear-gradient(90deg,transparent,var(--accent),transparent);
   border-radius:3px;
-}
-
-/* DEV DESCRIPTION */
-.dev-description{
-  max-width:900px;
-  margin:0 auto 40px;
-  padding:0 20px;
-  text-align:center;
-  font-size:15px;
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.dev-description strong{
-  color:var(--text);
 }
 
 /* SEARCH */
@@ -91,7 +76,6 @@ body{
   font-size:14px;
   background:var(--card);
   outline:none;
-  transition:.2s ease;
 }
 
 .search-section input:focus{
@@ -102,7 +86,7 @@ body{
 /* FILTER */
 .filter{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:60px;
 }
 
 .filter button{
@@ -113,28 +97,41 @@ body{
   background:#e8eaed;
   font-size:13px;
   cursor:pointer;
-  transition:.2s ease;
 }
 
 .filter button.active{
   background:var(--accent);
   color:white;
-  box-shadow:0 8px 20px rgba(246,76,23,.25);
 }
 
 /* FEATURED */
 .featured{
   max-width:1200px;
-  margin:0 auto 60px;
+  margin:0 auto 80px;
   padding:0 24px;
+  position:relative;
+}
+
+.featured-track{
+  display:flex;
+  gap:28px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+}
+
+.featured-track::-webkit-scrollbar{
+  display:none;
 }
 
 .featured-card{
+  flex:0 0 420px;
+  scroll-snap-align:center;
   background:var(--card);
   border-radius:28px;
-  padding:32px;
+  padding:28px;
   display:flex;
-  gap:32px;
+  gap:24px;
   align-items:center;
   box-shadow:0 20px 60px rgba(0,0,0,.08);
   transition:.3s ease;
@@ -142,15 +139,14 @@ body{
 
 .featured-card:hover{
   transform:translateY(-6px);
-  box-shadow:0 24px 70px rgba(0,0,0,.15);
+  box-shadow:0 24px 70px rgba(246,76,23,.15);
 }
 
 .featured-icon{
-  width:120px;
-  height:120px;
-  border-radius:30px;
+  width:100px;
+  height:100px;
+  border-radius:24px;
   overflow:hidden;
-  box-shadow:0 12px 40px rgba(0,0,0,.18);
 }
 
 .featured-icon img{
@@ -160,37 +156,36 @@ body{
 }
 
 .featured-content h2{
-  font-size:24px;
-  font-weight:600;
+  font-size:20px;
 }
 
 .featured-content p{
-  margin-top:8px;
+  font-size:14px;
   color:var(--muted);
+  margin-top:6px;
 }
 
 .featured-meta{
-  margin-top:12px;
-  font-size:14px;
+  font-size:13px;
   color:var(--muted);
+  margin-top:8px;
 }
 
 .featured-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 24px;
-  border-radius:26px;
+  margin-top:12px;
+  padding:8px 16px;
+  border-radius:20px;
   background:var(--accent);
   color:white;
   text-decoration:none;
-  font-size:14px;
+  font-size:13px;
 }
 
 /* GRID */
 .container{
   max-width:1200px;
   margin:auto;
-  padding:0 24px 80px;
+  padding:0 24px 100px;
 }
 
 .grid{
@@ -199,21 +194,17 @@ body{
   gap:30px;
 }
 
-/* CARD */
 .card{
   background:var(--card);
   padding:24px;
-  border-radius:24px;
+  border-radius:22px;
   box-shadow:0 14px 40px rgba(0,0,0,.05);
   transition:.25s ease;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
 }
 
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 50px rgba(0,0,0,.15);
+  transform:translateY(-4px);
+  box-shadow:0 18px 50px rgba(0,0,0,.12);
 }
 
 .app-top{
@@ -224,26 +215,14 @@ body{
 .app-icon{
   width:70px;
   height:70px;
-  border-radius:22px;
+  border-radius:20px;
   overflow:hidden;
-  background:#fff;
 }
 
 .app-icon img{
   width:100%;
   height:100%;
   object-fit:cover;
-}
-
-.card h3{
-  font-size:17px;
-  font-weight:600;
-}
-
-.card p{
-  font-size:14px;
-  color:var(--muted);
-  margin-top:4px;
 }
 
 .install{
@@ -253,25 +232,16 @@ body{
 }
 
 .badge{
-  margin-top:20px;
+  margin-top:18px;
 }
 
-.badge img{
-  height:42px;
-}
+.badge img{height:42px}
 
-/* FOOTER */
 footer{
   padding:60px 20px;
   text-align:center;
   font-size:14px;
   color:var(--muted);
-}
-
-footer a{
-  color:var(--accent);
-  text-decoration:none;
-  margin:0 14px;
 }
 </style>
 </head>
@@ -280,11 +250,9 @@ footer a{
 
 <div class="header">
   <h1>OZ Lab</h1>
-
   <div class="search-section">
     <input type="text" id="searchInput" placeholder="Search apps...">
   </div>
-
   <div class="filter">
     <button class="active" data-category="all">All</button>
     <button data-category="media">Media</button>
@@ -293,34 +261,8 @@ footer a{
   </div>
 </div>
 
-<section class="dev-description">
-  <p>
-    <strong>OZ Lab</strong> builds secure, minimal Android apps focused on core features.
-    Part of the OnlyZero ecosystem — essential apps with zero clutter, designed
-    to make your device faster, cleaner and distraction-free.
-  </p>
-  <p>
-    Our apps provide straightforward functionality with no bloat —
-    perfect for users who value performance, clarity and privacy.
-  </p>
-</section>
-
 <section class="featured">
-  <div class="featured-card">
-    <div class="featured-icon">
-      <img src="icons/only-gallery.png" alt="Only Gallery">
-    </div>
-    <div class="featured-content">
-      <h2>Only Gallery</h2>
-      <p>Fast photo & video gallery designed for speed and simplicity.</p>
-      <div class="featured-meta">⭐ 4.6 · ⬇ 50K+ installs</div>
-      <a class="featured-btn"
-         href="https://play.google.com/store/apps/details?id=com.andmobi.gallery"
-         target="_blank">
-         Get it on Google Play
-      </a>
-    </div>
-  </div>
+  <div class="featured-track" id="featuredTrack"></div>
 </section>
 
 <div class="container">
@@ -328,11 +270,7 @@ footer a{
 </div>
 
 <footer>
-  © 2026 OZ Lab ·
-  <a href="privacy.html">Privacy</a>
-  <a href="terms.html">Terms</a>
-  <a href="support.html">Support</a>
-  <a href="contact.html">Contact</a>
+  © 2026 OZ Lab
 </footer>
 
 <script>
@@ -358,8 +296,29 @@ const apps = [
 ["Only App Locker","Secure app locking","system","10K+","com.andmobi.applocker","icons/only-applocker.png"]
 ];
 
-const grid=document.getElementById("appGrid");
+/* ===== FEATURED (ONLY FIRST 5) ===== */
+const featuredTrack = document.getElementById("featuredTrack");
+apps.slice(0,5).forEach(app=>{
+  const card=document.createElement("div");
+  card.className="featured-card";
+  card.innerHTML=`
+    <div class="featured-icon">
+      <img src="${app[5]}" loading="lazy">
+    </div>
+    <div class="featured-content">
+      <h2>${app[0]}</h2>
+      <p>${app[1]}</p>
+      <div class="featured-meta">⭐ 4.6 · ⬇ ${app[3]}</div>
+      <a class="featured-btn"
+         href="https://play.google.com/store/apps/details?id=${app[4]}"
+         target="_blank">Get it</a>
+    </div>
+  `;
+  featuredTrack.appendChild(card);
+});
 
+/* ===== GRID (ALL 19) ===== */
+const grid=document.getElementById("appGrid");
 apps.forEach(app=>{
   const card=document.createElement("div");
   card.className="card";
@@ -369,12 +328,12 @@ apps.forEach(app=>{
   card.innerHTML=`
     <div class="app-top">
       <div class="app-icon">
-        <img src="${app[5]}" loading="lazy" decoding="async">
+        <img src="${app[5]}" loading="lazy">
       </div>
       <div>
         <h3>${app[0]}</h3>
         <p>${app[1]}</p>
-        <div class="install">⭐ 4.6 · ⬇ ${app[3]} installs</div>
+        <div class="install">⭐ 4.6 · ⬇ ${app[3]}</div>
       </div>
     </div>
     <div class="badge">
@@ -386,6 +345,7 @@ apps.forEach(app=>{
   grid.appendChild(card);
 });
 
+/* SEARCH */
 document.getElementById("searchInput").addEventListener("input",e=>{
   const v=e.target.value.toLowerCase();
   document.querySelectorAll(".card").forEach(c=>{
@@ -393,6 +353,7 @@ document.getElementById("searchInput").addEventListener("input",e=>{
   });
 });
 
+/* FILTER */
 document.querySelectorAll(".filter button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll(".filter button").forEach(b=>b.classList.remove("active"));
