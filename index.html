@@ -30,7 +30,7 @@ body{
   color:var(--text);
 }
 
-/* HEADER (Compact) */
+/* HEADER */
 header{
   background:white;
   padding:10px 20px;
@@ -42,16 +42,10 @@ header{
 @media (prefers-color-scheme: dark){
   header{background:#1e1e1e;}
 }
-header h1{
-  font-size:18px;
-}
-header p{
-  font-size:12px;
-  opacity:.7;
-  margin-top:2px;
-}
+header h1{font-size:18px;}
+header p{font-size:12px;opacity:.7;margin-top:2px;}
 
-/* SMALL TITLE SECTION */
+/* TITLE */
 .top-title{
   padding:14px 20px 6px;
   text-align:center;
@@ -66,7 +60,7 @@ header p{
   margin-top:3px;
 }
 
-/* SEARCH (Tight) */
+/* SEARCH */
 .search{
   max-width:600px;
   margin:8px auto 10px;
@@ -79,7 +73,7 @@ header p{
   font-size:14px;
 }
 
-/* FILTER (Tight) */
+/* FILTER */
 .filter{
   text-align:center;
   margin-bottom:10px;
@@ -111,7 +105,7 @@ header p{
   gap:14px;
 }
 
-/* CARD (Dense) */
+/* CARD */
 .card{
   background:var(--card);
   padding:14px;
@@ -140,23 +134,11 @@ header p{
   font-size:20px;
 }
 
-.card h3{
-  font-size:14px;
-}
-.card p{
-  font-size:12px;
-  opacity:.7;
-  margin-top:3px;
-}
-.install{
-  font-size:11px;
-  opacity:.6;
-  margin-top:4px;
-}
+.card h3{font-size:14px;}
+.card p{font-size:12px;opacity:.7;margin-top:3px;}
+.install{font-size:11px;opacity:.6;margin-top:4px;}
 
-.badge{
-  margin-top:10px;
-}
+.badge{margin-top:10px;}
 .badge img{
   height:32px;
   transition:.2s ease;
@@ -165,21 +147,26 @@ header p{
   transform:scale(1.05);
 }
 
-/* PRIVACY (Compact) */
+/* PRIVACY SECTION */
 .privacy{
   margin-top:40px;
   background:var(--card);
-  padding:25px 16px;
+  padding:30px 16px;
   border-top:1px solid rgba(0,0,0,0.05);
 }
 .privacy h2{
   font-size:16px;
   margin-bottom:12px;
 }
+.privacy h3{
+  font-size:14px;
+  margin-top:14px;
+  margin-bottom:6px;
+}
 .privacy p{
   font-size:13px;
-  margin-bottom:10px;
   line-height:1.6;
+  margin-bottom:8px;
   opacity:.85;
 }
 
@@ -221,20 +208,44 @@ footer{
   <div class="grid" id="appGrid"></div>
 </div>
 
+<!-- FULL PRIVACY POLICY -->
 <div class="privacy">
   <h2>Privacy Policy</h2>
   <p><strong>Effective Date: 2026</strong></p>
+
+  <h3>Information Collection and Use</h3>
   <p>
-    OZ Lab operates a collection of Android applications. We do not collect,
-    store, transmit, or share personal data. Our apps work primarily offline
-    and do not require account registration.
+    OZ Lab ("we", "our", or "us") operates a collection of Android applications.
+    We do not collect, store, transmit, or share any personal data.
+    Our apps function primarily offline and do not require account registration.
   </p>
+
+  <h3>Log Data</h3>
   <p>
-    We do not use analytics, tracking technologies, advertising SDKs,
-    or third-party data collection services.
+    We do not collect analytics data, crash reports, usage statistics,
+    device identifiers, or any other technical log data.
   </p>
+
+  <h3>Cookies and Tracking</h3>
   <p>
-    All data created within the apps remains on your device.
+    Our apps do not use cookies, tracking technologies,
+    advertising SDKs, or third-party analytics services.
+  </p>
+
+  <h3>Security</h3>
+  <p>
+    Since no personal information is collected or transmitted,
+    there is no external storage of user data.
+    All information remains locally on your device.
+  </p>
+
+  <h3>Changes to This Policy</h3>
+  <p>
+    This Privacy Policy may be updated from time to time.
+    Any updates will be reflected by revising the effective date above.
+  </p>
+
+  <p>
     Contact: onlyapp.contact@gmail.com
   </p>
 </div>
