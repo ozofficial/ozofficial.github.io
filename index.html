@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OZ Lab – Android Apps</title>
-<meta name="description" content="Official developer page for OZ Lab Android apps. Clean, minimal Android tools.">
+<meta name="description" content="Official OZ Lab Android apps. Clean. Minimal. Essential.">
 
 <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
 
@@ -18,7 +18,7 @@
 
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#111;
+    --bg:#121212;
     --card:#1e1e1e;
     --text:#f5f5f5;
   }
@@ -30,57 +30,55 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.5;
 }
 
-/* HERO */
-.hero{
-  padding:22px 20px 12px;
+/* HEADER */
+.header{
+  max-width:1100px;
+  margin:32px auto 20px;
+  padding:0 20px;
   text-align:center;
-  background:none; /* remove gradient to reduce visual space */
 }
 
-.hero h1{
+.header h1{
   font-size:26px;
   font-weight:600;
-}
-
-.hero p{
-  font-size:13px;
-  opacity:.6;
-  margin-top:4px;
+  margin-bottom:16px;
 }
 
 /* SEARCH */
 .search{
-  max-width:600px;
-  margin:12px auto 10px;
+  max-width:520px;
+  margin:0 auto 14px;
 }
+
 .search input{
   width:100%;
-  padding:14px 18px;
-  border-radius:14px;
+  padding:12px 16px;
+  border-radius:12px;
   border:1px solid #dadce0;
-  font-size:15px;
+  font-size:14px;
   background:var(--card);
   color:var(--text);
 }
 
 /* FILTER */
 .filter{
-  text-align:center;
-  margin-bottom:14px;
+  margin-bottom:22px;
 }
+
 .filter button{
-  margin:5px;
-  padding:8px 18px;
-  border-radius:22px;
+  margin:0 6px;
+  padding:6px 16px;
+  border-radius:18px;
   border:none;
   background:#e8eaed;
   cursor:pointer;
-  font-size:14px;
+  font-size:13px;
   transition:.2s;
 }
+
 .filter button.active{
   background:var(--accent);
   color:#fff;
@@ -88,33 +86,35 @@ body{
 
 /* GRID */
 .container{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
-  padding:20px;
+  padding:0 20px 50px;
 }
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
+  gap:20px;
 }
 
 /* CARD */
 .card{
   background:var(--card);
-  padding:22px;
-  border-radius:22px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.06);
-  transition:.3s ease;
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  transition:.25s ease;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   opacity:0;
-  transform:translateY(15px);
-  animation:fadeUp .5s ease forwards;
+  transform:translateY(10px);
+  animation:fadeUp .4s ease forwards;
 }
+
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 14px 35px rgba(0,0,0,0.15);
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
 }
 
 @keyframes fadeUp{
@@ -123,14 +123,15 @@ body{
 
 .app-top{
   display:flex;
-  gap:16px;
+  gap:14px;
+  text-align:left;
 }
 
 /* ICON */
 .app-icon{
-  width:68px;
-  height:68px;
-  border-radius:22px;
+  width:60px;
+  height:60px;
+  border-radius:18px;
   background:#fff;
   overflow:hidden;
   flex-shrink:0;
@@ -143,14 +144,14 @@ body{
   height:100%;
   object-fit:cover;
   opacity:0;
-  transition:opacity .4s ease;
+  transition:opacity .3s ease;
 }
 
 .app-icon.loaded img{opacity:1;}
 
 .fallback{
   display:none;
-  font-size:26px;
+  font-size:22px;
   color:var(--accent);
   align-items:center;
   justify-content:center;
@@ -159,45 +160,51 @@ body{
 
 /* TEXT */
 .card h3{
-  font-size:17px;
+  font-size:15px;
+  font-weight:600;
 }
+
 .card p{
-  font-size:14px;
-  opacity:.75;
-  margin-top:5px;
-}
-.install{
   font-size:13px;
+  opacity:.75;
+  margin-top:4px;
+}
+
+.install{
+  font-size:12px;
   opacity:.6;
   margin-top:6px;
 }
 
 /* BADGE */
 .badge{
-  margin-top:20px;
-  height:42px;
+  margin-top:16px;
+  height:38px;
   display:flex;
+  justify-content:center;
   align-items:center;
 }
+
 .badge img{
-  height:40px;
+  height:38px;
   width:auto;
-  max-width:160px;
+  max-width:150px;
   object-fit:contain;
-  display:block;
-  transition:.2s ease;
+  transition:.2s;
 }
+
 .badge img:hover{
   transform:scale(1.05);
 }
 
 /* FOOTER */
 footer{
-  padding:50px 20px;
+  padding:40px 20px;
   text-align:center;
-  font-size:14px;
+  font-size:13px;
   opacity:.6;
 }
+
 footer a{
   color:var(--accent);
   text-decoration:none;
@@ -208,32 +215,28 @@ footer a{
 
 <body>
 
-<section class="hero">
+<div class="header">
   <h1>OZ Lab</h1>
-  <p>
-OZ Lab builds secure, minimal Android apps focused on core features. Part of the OnlyZero ecosystem—essential apps, zero clutter.</p>
-</section>
-
-<div class="search">
-  <input type="text" id="searchInput" placeholder="Search apps...">
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Search apps...">
+  </div>
+  <div class="filter">
+    <button class="active" data-category="all">All</button>
+    <button data-category="media">Media</button>
+    <button data-category="tools">Tools</button>
+    <button data-category="system">System</button>
+  </div>
 </div>
 
-<div class="filter">
-  <button class="active" data-category="all">All</button>
-  <button data-category="media">Media</button>
-  <button data-category="tools">Tools</button>
-  <button data-category="system">System</button>
-</div>
-
-<section class="container">
+<div class="container">
   <div class="grid" id="appGrid"></div>
-</section>
+</div>
 
 <footer>
   © 2026 OZ Lab ·
-  <a href="privacy.html">Privacy</a> ·
-  <a href="terms.html">Terms</a> ·
-  <a href="support.html">Support</a> ·
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+  <a href="support.html">Support</a>
   <a href="contact.html">Contact</a>
 </footer>
 
@@ -265,7 +268,7 @@ const grid=document.getElementById("appGrid");
 apps.forEach((app,i)=>{
   const card=document.createElement("div");
   card.className="card";
-  card.style.animationDelay=i*50+"ms";
+  card.style.animationDelay=i*35+"ms";
   card.dataset.name=app[0].toLowerCase();
   card.dataset.category=app[3];
 
