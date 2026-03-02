@@ -1,0 +1,10 @@
+
+{
+  "name":"OZ Lab",
+  "short_name":"OZ Lab",
+  "start_url":"/",
+  "display":"standalone",
+  "background_color":"#ffffff",
+  "theme_color":"#F64C17",
+  "icons":[]
+}
