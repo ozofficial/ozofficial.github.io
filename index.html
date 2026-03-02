@@ -139,7 +139,7 @@ header p{font-size:12px;opacity:.7;margin-top:2px;}
 }
 
 .fallback-icon{
-  position:absolute;
+  display:none;
   font-size:20px;
   color:#F64C17;
 }
@@ -258,10 +258,13 @@ function createCard(app){
     </div>
   `;
 
-  const img = card.querySelector("img");
-  img.onerror = () => {
-    img.remove();
-  };
+ const img = card.querySelector("img");
+const fallback = card.querySelector(".fallback-icon");
+
+img.onerror = () => {
+  img.remove();
+  fallback.style.display = "block";
+};
 
   return card;
 }
