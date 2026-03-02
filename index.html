@@ -35,51 +35,47 @@ body{
   line-height:1.5;
 }
 
-/* HERO */
+/* ===== HERO ===== */
+
 .header{
   text-align:center;
-  padding:16px 16px 4px;
+  padding:24px 16px 12px;
+  position:relative;
 }
 
 .header h1{
-  font-size:26px;
+  font-size:28px;
   font-weight:600;
   position:relative;
   display:inline-block;
-  margin-bottom:14px;
-  letter-spacing:.2px;
+  margin-bottom:18px;
+  letter-spacing:.3px;
 }
 
-/* Accent line */
 .header h1::after{
   content:"";
   position:absolute;
   left:50%;
-  transform:translateX(-50%) scaleX(0);
-  transform-origin:center;
-  bottom:-6px;
-  width:42px;
+  transform:translateX(-50%);
+  bottom:-8px;
+  width:44px;
   height:3px;
   background:linear-gradient(90deg,transparent,var(--accent),transparent);
   border-radius:3px;
-  animation:grow .45s ease forwards;
-}
-
-@keyframes grow{
-  to{transform:translateX(-50%) scaleX(1);}
 }
 
 /* SEARCH */
+
 .search-section{
   max-width:720px;
-  margin:10px auto 12px;
+  margin:0 auto 16px;
   padding:0 16px;
 }
 
 .search-section input{
   width:100%;
-  padding:13px 18px;
-  border-radius:16px;
+  padding:14px 20px;
+  border-radius:18px;
   border:1px solid #dadce0;
   font-size:14px;
   background:var(--card);
@@ -93,15 +89,16 @@ body{
 }
 
 /* FILTER */
+
 .filter{
   text-align:center;
-  margin-bottom:18px;
+  margin-bottom:26px;
 }
 
 .filter button{
   margin:4px;
-  padding:7px 18px;
-  border-radius:22px;
+  padding:8px 20px;
+  border-radius:24px;
   border:none;
   background:#e8eaed;
   font-size:13px;
@@ -116,76 +113,42 @@ body{
 .filter button.active{
   background:var(--accent);
   color:white;
-  box-shadow:0 6px 16px rgba(246,76,23,.25);
+  box-shadow:0 8px 20px rgba(246,76,23,.25);
 }
 
-  <section class="featured">
-  <div class="featured-card">
-    <div class="featured-icon">
-      <img src="icons/only-gallery.png" alt="Only Gallery">
-    </div>
+/* ===== FEATURED ===== */
 
-    <div class="featured-content">
-      <h2>Only Gallery</h2>
-      <p>Fast photo & video gallery designed for speed and simplicity.</p>
-
-      <div class="featured-meta">
-        ⭐ 4.6 · ⬇ 50K+ installs
-      </div>
-
-      <a class="featured-btn"
-         href="https://play.google.com/store/apps/details?id=com.andmobi.gallery"
-         target="_blank">
-         Get it on Google Play
-      </a>
-    </div>
-  </div>
-</section>
-
-/* GRID */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:0 24px 60px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:28px;
-}
-/* FEATURED */
 .featured{
   max-width:1200px;
-  margin:0 auto 40px;
+  margin:0 auto 50px;
   padding:0 24px;
 }
 
 .featured-card{
   background:var(--card);
-  border-radius:26px;
-  padding:28px;
+  border-radius:28px;
+  padding:32px;
   display:flex;
-  gap:28px;
+  gap:32px;
   align-items:center;
   box-shadow:
-    0 2px 6px rgba(0,0,0,.06),
-    0 20px 60px rgba(0,0,0,.06);
+    0 4px 12px rgba(0,0,0,.06),
+    0 24px 60px rgba(0,0,0,.06);
   transition:.3s ease;
 }
 
 .featured-card:hover{
   transform:translateY(-6px);
   box-shadow:
-    0 14px 40px rgba(0,0,0,.12);
+    0 18px 50px rgba(0,0,0,.14);
 }
 
 .featured-icon{
-  width:110px;
-  height:110px;
-  border-radius:28px;
+  width:120px;
+  height:120px;
+  border-radius:30px;
   overflow:hidden;
-  box-shadow:0 8px 30px rgba(0,0,0,.15);
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
 }
 
 .featured-icon img{
@@ -195,27 +158,27 @@ body{
 }
 
 .featured-content h2{
-  font-size:22px;
+  font-size:24px;
   font-weight:600;
 }
 
 .featured-content p{
   margin-top:8px;
   color:var(--muted);
-  font-size:14px;
+  font-size:15px;
 }
 
 .featured-meta{
   margin-top:12px;
-  font-size:13px;
+  font-size:14px;
   color:var(--muted);
 }
 
 .featured-btn{
   display:inline-block;
-  margin-top:18px;
-  padding:10px 20px;
-  border-radius:24px;
+  margin-top:20px;
+  padding:12px 24px;
+  border-radius:26px;
   background:var(--accent);
   color:white;
   text-decoration:none;
@@ -233,15 +196,31 @@ body{
     text-align:center;
   }
 }
-/* CARD */
+
+/* ===== GRID ===== */
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px 80px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:30px;
+}
+
+/* ===== CARD ===== */
+
 .card{
   background:var(--card);
-  padding:22px;
-  border-radius:22px;
+  padding:24px;
+  border-radius:24px;
   box-shadow:
-    0 1px 2px rgba(0,0,0,.06),
-    0 8px 30px rgba(0,0,0,.04);
-  transition:all .25s cubic-bezier(.4,0,.2,1);
+    0 2px 6px rgba(0,0,0,.06),
+    0 14px 40px rgba(0,0,0,.05);
+  transition:.25s ease;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -253,7 +232,7 @@ body{
 .card:hover{
   transform:translateY(-6px);
   box-shadow:
-    0 10px 34px rgba(0,0,0,.12);
+    0 16px 50px rgba(0,0,0,.14);
 }
 
 @keyframes fadeUp{
@@ -262,20 +241,20 @@ body{
 
 .app-top{
   display:flex;
-  gap:16px;
+  gap:18px;
   text-align:left;
 }
 
 /* ICON */
+
 .app-icon{
-  width:64px;
-  height:64px;
-  border-radius:20px;
+  width:70px;
+  height:70px;
+  border-radius:22px;
   background:#fff;
   overflow:hidden;
   flex-shrink:0;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-  position:relative;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
 
 @media (prefers-color-scheme: dark){
@@ -302,48 +281,51 @@ body{
 }
 
 /* TEXT */
+
 .card h3{
-  font-size:16px;
+  font-size:17px;
   font-weight:600;
 }
 
 .card p{
-  font-size:13px;
+  font-size:14px;
   color:var(--muted);
   margin-top:4px;
 }
 
 .install{
-  font-size:12px;
+  font-size:13px;
   color:var(--muted);
-  margin-top:6px;
+  margin-top:8px;
 }
 
 /* BADGE */
+
 .badge{
-  margin-top:18px;
-  height:40px;
+  margin-top:20px;
+  height:42px;
   display:flex;
   align-items:center;
 }
 
 .badge img{
-  height:40px;
+  height:42px;
   width:auto;
 }
 
 /* FOOTER */
+
 footer{
-  padding:50px 20px;
+  padding:60px 20px;
   text-align:center;
-  font-size:13px;
+  font-size:14px;
   color:var(--muted);
 }
 
 footer a{
   color:var(--accent);
   text-decoration:none;
-  margin:0 12px;
+  margin:0 14px;
 }
 </style>
 </head>
@@ -352,9 +334,11 @@ footer a{
 
 <div class="header">
   <h1>OZ Lab</h1>
+
   <div class="search-section">
     <input type="text" id="searchInput" placeholder="Search apps...">
   </div>
+
   <div class="filter">
     <button class="active" data-category="all">All</button>
     <button data-category="media">Media</button>
@@ -362,6 +346,25 @@ footer a{
     <button data-category="system">System</button>
   </div>
 </div>
+
+<!-- FEATURED -->
+<section class="featured">
+  <div class="featured-card">
+    <div class="featured-icon">
+      <img src="icons/only-gallery.png" alt="Only Gallery">
+    </div>
+    <div class="featured-content">
+      <h2>Only Gallery</h2>
+      <p>Fast photo & video gallery designed for speed and simplicity.</p>
+      <div class="featured-meta">⭐ 4.6 · ⬇ 50K+ installs</div>
+      <a class="featured-btn"
+         href="https://play.google.com/store/apps/details?id=com.andmobi.gallery"
+         target="_blank">
+         Get it on Google Play
+      </a>
+    </div>
+  </div>
+</section>
 
 <div class="container">
   <div class="grid" id="appGrid"></div>
@@ -416,7 +419,7 @@ apps.forEach((app,i)=>{
       <div>
         <h3>${app[0]}</h3>
         <p>${app[2]}</p>
-        <div class="install">⬇ ${app[4]} installs</div>
+        <div class="install">⭐ 4.6 · ⬇ ${app[4]} installs</div>
       </div>
     </div>
     <div class="badge">
