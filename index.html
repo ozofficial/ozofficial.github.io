@@ -1,384 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OnlyZero – Simple Android Tools</title>
-  <meta name="description" content="OnlyZero unites your core Android apps into one beautiful, connected experience — fast, focused, and truly essential." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root{
-      --bg:#fafafa; --surface:#ffffff; --surface-variant:#f2f4f7;
-      --border:rgba(0,0,0,.08); --text:#1f1f1f; --muted:#5f6368;
-      --accent:#4285F4; --brand:#34A853;
-      --elev-1:0 1px 2px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.08);
-      --elev-2:0 8px 18px rgba(0,0,0,.12);
-      --max:1120px; --ring:0 0 0 3px rgba(66,133,244,.28)
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b0b10; --surface:#12151c; --surface-variant:#171b24;
-        --border:rgba(255,255,255,.10); --text:#e8eaed; --muted:#b0b4ba;
-        --elev-1:0 1px 2px rgba(0,0,0,.3),0 2px 8px rgba(0,0,0,.35);
-        --elev-2:0 10px 24px rgba(0,0,0,.5)
-      }
-    }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    a:focus-visible,button:focus-visible,input:focus-visible{outline:none;box-shadow:var(--ring)}
-    img{display:block;max-width:100%}
-    [hidden]{display:none !important}
-
-    header{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);
-      background:rgba(255,255,255,.75);border-bottom:1px solid var(--border)}
-    @media (prefers-color-scheme: dark){header{background:rgba(18,21,28,.7)}}
-    .header-inner{max-width:var(--max);margin:0 auto;text-align:center;padding:16px 24px;display:grid;gap:8px}
-    .brand{margin:0;font-size:clamp(22px,4vw,34px);font-weight:800;letter-spacing:-.02em}
-    .tagline{margin:6px 0 0;color:var(--muted)}
-    .topnav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .topnav a{display:inline-block;padding:8px 12px;border-radius:9999px;border:1px solid var(--border);background:var(--surface-variant);font-weight:700}
-    .topnav a:hover{transform:translateY(-1px);box-shadow:var(--elev-1)}
-
-    .hero{background:linear-gradient(135deg, rgba(66,133,244,.08), rgba(52,168,83,.08));border-bottom:1px solid var(--border)}
-    .hero-inner{max-width:var(--max);margin:0 auto;padding:22px 24px;display:grid;gap:14px;text-align:center}
-
-    .controls{display:grid;gap:12px;justify-items:center}
-    .search-wrap{width:min(780px,100%);display:grid;grid-template-columns:1fr auto auto;gap:10px}
-    .search{border-radius:9999px;padding:12px 18px;height:48px;border:1px solid var(--border);background:var(--surface-variant);box-shadow:var(--elev-1)}
-    .clear-btn,.reset-btn{cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:9999px;padding:0 16px;height:48px;line-height:48px;box-shadow:var(--elev-1)}
-    .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .filter-btn{border-radius:9999px;padding:8px 14px;height:40px;background:var(--surface-variant);border:1px solid var(--border);cursor:pointer;font-weight:700;box-shadow:var(--elev-1)}
-    .filter-btn.active{background:rgba(52,168,83,.14);border-color:rgba(52,168,83,.28)}
-    .status{font-size:.95rem;color:var(--muted)}
-
-    .container{max-width:var(--max);margin:0 auto;padding:24px}
-    .app-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
-      gap:16px;
-      margin-top:12px;
-    }
-    @media (max-width: 900px){ .app-grid{ grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); } }
-    @media (max-width: 640px){ .app-grid{ grid-template-columns:1fr; } }
-
-    .card{
-      position:relative;display:grid;grid-template-columns:72px 1fr;gap:16px;
-      padding:18px 18px 58px 18px;border-radius:18px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--elev-1);
-      transition:box-shadow .2s,transform .2s,border-color .2s; min-height:120px;
-    }
-    .card:hover{transform:translateY(-2px);box-shadow:var(--elev-2);border-color:rgba(66,133,244,.14)}
-    .icon{width:72px;height:72px;border-radius:20px;overflow:hidden;background:var(--surface-variant)}
-    .icon img{width:100%;height:100%;object-fit:cover}
-    .name{margin:0;font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
-    .dev{font-size:.88rem;color:var(--muted)}
-    .desc{margin:6px 0 0;color:rgba(0,0,0,.72);font-size:.94rem;line-height:1.35}
-    @media (prefers-color-scheme: dark){.desc{color:rgba(232,234,237,.82)}}
-    .chip{font-size:.72rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;padding:3px 7px;border-radius:9999px;border:1px solid var(--border);background:var(--surface-variant)}
-    .badge{
-      position:absolute;left:18px;bottom:18px;display:inline-block;
-      padding:6px 8px;border-radius:12px;background:var(--surface-variant);border:1px solid var(--border);box-shadow:var(--elev-1);
-      font-size:.78rem;font-weight:700
-    }
-    .card-link{position:absolute;inset:0;z-index:1;border-radius:inherit}
-
-    /* Sections */
-    .section{border-top:1px solid var(--border);background:var(--surface-variant)}
-    .section-inner{max-width:var(--max);margin:0 auto;padding:32px 24px;display:grid;gap:18px}
-    .section h2{margin:0;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em}
-    .muted{color:var(--muted)}
-    .pill{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:9999px;background:var(--surface);font-weight:700}
-    .kudos{display:flex;gap:10px;flex-wrap:wrap}
-
-    /* Privacy content styling */
-    .policy{display:grid;gap:12px}
-    .policy h3{margin:10px 0 0;font-size:1.05rem}
-    .policy p, .policy li{color:var(--muted);line-height:1.55}
-    .policy ul{margin:0 0 0 18px;padding:0}
-
-    footer{text-align:center;font-size:.9rem;color:var(--muted);margin:36px 0 24px}
-
-    /* Mobile tweaks */
-    @media (max-width:640px){
-      .search-wrap{grid-template-columns:1fr;gap:8px;width:100%}
-      .search{height:44px}
-      .clear-btn,.reset-btn{height:44px}
-      .filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
-      .filter-btn{width:100%}
-    }
-    @media (max-width:380px){
-      .filters{grid-template-columns:1fr}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OZ Lab – Flagship</title>
+<meta name="description" content="OZ Lab builds secure minimal Android apps.">
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="canonical" href="https://ozofficial.github.io/">
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <h1 class="brand">OnlyZero</h1>
-      <p class="tagline">Simple • Private • Lightweight</p>
-      <nav class="topnav" aria-label="Primary">
-        <a href="#apps" aria-label="Skip to apps">Apps</a>
-        <a href="#about">About</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero" aria-label="Intro">
-    <div class="hero-inner">
-      <div class="controls" role="search">
-        <div class="search-wrap">
-          <input id="q" class="search" type="search" placeholder="Search apps… (music, gallery, notes)" aria-label="Search apps" autocomplete="off" />
-          <button id="clear" class="clear-btn" type="button" aria-label="Clear search">×</button>
-          <button id="reset" class="reset-btn" type="button" aria-label="Reset filters and search">Reset</button>
-        </div>
-        <div class="filters" role="tablist" aria-label="Filter apps by category">
-          <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">All</button>
-          <button class="filter-btn" role="tab" data-filter="featured">Featured</button>
-          <button class="filter-btn" role="tab" data-filter="media">Media</button>
-          <button class="filter-btn" role="tab" data-filter="tools">Tools</button>
-          <button class="filter-btn" role="tab" data-filter="communication">Communication</button>
-        </div>
-        <div id="result-count" class="status" role="status" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+<div class="hero-layer"></div>
+<h1>OZ Lab</h1>
+<p>Essential Apps. Zero Clutter.</p>
+</section>
 
-  <main class="container">
-    <section id="apps" class="app-grid" aria-live="polite"></section>
-  </main>
+<div class="filter-bar">
+<button onclick="filterApps('all')">All</button>
+<button onclick="filterApps('communication')">Communication</button>
+<button onclick="filterApps('media')">Media</button>
+<button onclick="filterApps('utility')">Utility</button>
+</div>
 
-  <!-- About -->
-  <section id="about" class="section" aria-label="About OnlyZero">
-    <div class="section-inner">
-      <h2>About</h2>
-      <p class="muted">OnlyZero brings together your most important Android experiences — calling, messaging, photos, music, calendar, and more — into one unified hub designed for simplicity, speed, and clarity.
-Every feature is crafted to help you stay connected, productive, and present — without distractions. From managing your contacts to capturing moments, OnlyZero keeps the core of your digital life organised and beautifully accessible.
-It’s not about having more apps — it’s about having the right ones, working together seamlessly. Experience the balance of minimalism and utility — experience OnlyZero.</p>
-      <div class="kudos" aria-label="Principles">
-        <span class="pill" aria-hidden="true">Private by default</span>
-        <span class="pill" aria-hidden="true">Lightweight & fast</span>
-        <span class="pill" aria-hidden="true">No bloat, no nags</span>
-        <span class="pill" aria-hidden="true">Open to feedback</span>
-      </div>
-    </div>
-  </section>
+<div class="container">
 
-  <!-- Privacy -->
-  <section id="privacy" class="section" aria-label="Privacy Policy">
-    <div class="section-inner">
-      <h2>Privacy Policy</h2>
+<div class="app" data-category="communication">
+<h2>Only Phone</h2>
+<img src="https://play-lh.googleusercontent.com/com.andmobi.phone" loading="lazy">
+<br>
+<a class="button" href="com.andmobi.phone.html">Explore</a>
+</div>
 
-      <!-- Inline fallback content (will be replaced if external page loads) -->
-      <div id="privacy-fallback" class="policy">
-        <p>OnlyZero apps are built to respect your privacy:</p>
-        <ul>
-          <li>No ads, no trackers, no analytics.</li>
-          <li>No accounts or sign-ups required.</li>
-          <li>Most apps work fully offline, keeping your data on your device.</li>
-          <li>We never sell or share personal information.</li>
-        </ul>
-        <p>Questions about privacy? Email us at
-          <a href="mailto:onlyapp.contact@gmail.com" target="_blank" rel="noopener">onlyapp.contact@gmail.com</a>.
-        </p>
-        <p>
-          You can also view the full policy here:
-          <a href="https://ozofficial.github.io/privacy.html" target="_blank" rel="noopener">Open full Privacy Policy</a>.
-        </p>
-      </div>
+<div class="app" data-category="media">
+<h2>Only Gallery</h2>
+<img src="https://play-lh.googleusercontent.com/com.andmobi.gallery" loading="lazy">
+<br>
+<a class="button" href="com.andmobi.gallery.html">Explore</a>
+</div>
 
-      <!-- Container for external content -->
-      <div id="privacy-external" class="policy" hidden></div>
-    </div>
-  </section>
+<div class="app" data-category="utility">
+<h2>Only Calculator</h2>
+<img src="https://play-lh.googleusercontent.com/com.andmobi.math" loading="lazy">
+<br>
+<a class="button" href="com.andmobi.math.html">Explore</a>
+</div>
 
-  <!-- Contact -->
-  <section id="contact" class="section" aria-label="Contact">
-    <div class="section-inner">
-      <h2>Contact</h2>
-      <p class="muted">Questions, ideas, or bug reports? We love hearing from you.</p>
-      <p><strong>Email:</strong> <a href="mailto:onlyapp.contact@gmail.com" target="_blank" rel="noopener">onlyapp.contact@gmail.com</a></p>
-      <p class="muted">When reporting a bug, please include your device model, Android version, and steps to reproduce.</p>
-    </div>
-  </section>
+<div class="app" data-category="communication">
+<h2>Only Messages</h2>
+<img src="https://play-lh.googleusercontent.com/com.andmobi.messages" loading="lazy">
+<br>
+<a class="button" href="com.andmobi.messages.html">Explore</a>
+</div>
 
-  <footer role="contentinfo">
-    <p>© <span id="y"></span> OnlyZero · <a href="#about">About</a> · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a></p>
-  </footer>
+<div class="app" data-category="communication">
+<h2>Only Contacts</h2>
+<img src="https://play-lh.googleusercontent.com/com.andmobi.contacts" loading="lazy">
+<br>
+<a class="button" href="com.andmobi.contacts.html">Explore</a>
+</div>
 
-  <script>
-    // --- branding assert (helps if an old cached HTML slips through)
-    document.addEventListener('DOMContentLoaded', () => {
-      const h1 = document.querySelector('.brand');
-      if (h1 && h1.textContent.trim() !== 'OnlyZero') h1.textContent = 'OnlyZero';
-    });
+</div>
 
-    // ---------- data ----------
-    const APPS = [
-      // media
-      {name:"Only Play",         pkg:"com.andmobi.onlyplay",     cat:"media", icon:"https://play-lh.googleusercontent.com/CWiXjqHcX5Q_E77gQt4Xtn0NCijk-n_NpJrF-GYb69D8ELzYPy9JRcbOyeILnwbuUVSfi7tNiR3Mltis6fU3Ww=w240-h480", desc:"Smooth offline video player with folders and quick controls."},
-      {name:"Only Gallery",      pkg:"com.andmobi.gallery",      cat:"media", icon:"https://play-lh.googleusercontent.com/r0Y5mvzS0_FFppsz8knAv3j7GfJNieCV2yCKcmtUNZURVMSW-r_tMU_S9yujiP9lvlKhFSnYc432WY00CeiS=w240-h480", desc:"Beautiful, private gallery for photos and videos. 100% offline."},
-      {name:"Only Music",        pkg:"com.andmobi.music",        cat:"media", icon:"https://play-lh.googleusercontent.com/gbBlOU6QuDFeQJNygW6gnSHNDMZ2S9CjYPq1Kc3vijhEtD9U3v-2Tlo1d2kEGoVkjhL2rkbn5cfXMlATczkOyg=w240-h480", desc:"Offline music player with folders and quick playlists. No ads."},
-      {name:"Only Camera",       pkg:"com.andmobi.camera",       cat:"media", icon:"https://play-lh.googleusercontent.com/sUGpcHThl70KDWDKI91D0knw7w2Z2--iz5kkQUIsK-sHJDJlkmhRbXYsepTTgqEPpyqwFgTtiN7rI-eKGe-U=w240-h480", desc:"Opens fast, captures instantly. No clutter, no ads."},
+<footer>
+© 2026 OZ Lab · <a href="privacy.html">Privacy</a>
+</footer>
 
-      // tools
-      {name:"Only Files",        pkg:"com.andmobi.filemanager",  cat:"tools", icon:"https://play-lh.googleusercontent.com/1CwN7DPl2LtM0eVHxex80giNxKXX-TLw-yNTiwmeGVAPOObyMcRro-Jw2RaNi3MokV-ji38NwPKCKop3WJlXEA=w240-h480", desc:"Fast file manager with a clean UI. Private by design."},
-      {name:"Only Launcher",     pkg:"com.andmobi.home",         cat:"tools", icon:"https://play-lh.googleusercontent.com/O_8Wx5LeKlAuo5t513zCyQpA_hNkUSBK3V7G4uoa1K-aDailx0tRS4NnpRdIOKdD6ZVI2UJCBXMeI19VTzPvfw=w240-h480", desc:"Zero-bloat home screen. Super fast with a focus on essentials."},
-      {name:"Only Keyboard",     pkg:"com.andmobi.keyboard",     cat:"tools", icon:"https://play-lh.googleusercontent.com/KF9fU6UXofoGpU-J9Uw4rgR7sWorBwCvXjOc3XsfmEwE7CZ8O9q4RyS2tKoUVyA_-I_9jKrOBr5B6HTTGdsUDg=w240-h480", desc:"Fast, distraction-free typing. No network access, no tracking."},
-      {name:"Only Voice Recorder",pkg:"com.andmobi.voicerecorder",cat:"tools", icon:"https://play-lh.googleusercontent.com/CpeXdE5zBQ83HVEsfW5gjoZTrXLP5DL3ProDR_DnfqKuSw_iP5SHb2wO_AJVy8MpXCcPPrREyTL-LEboVZc6=w240-h480", desc:"One-tap high-quality recordings that stay local on your device."},
-      {name:"Only Calculator",   pkg:"com.andmobi.math",         cat:"tools", icon:"https://play-lh.googleusercontent.com/9E7D3Ijctr44Tfd0akLcELdLgPTEzMJKt9aTYVbrFDJUqRzxIiHdmr08VaQoUXHwqe-Rio6_wYFY81kaK50Gzw=w240-h480", desc:"Clean, reliable calculator with large buttons. Ad-free."},
-      {name:"Only Paint",        pkg:"com.andmobi.paint",        cat:"tools", icon:"https://play-lh.googleusercontent.com/hTbZyMIoBlCyw49PrzhplRt7NEMHpP6q7ED9zSaHNq8cxgTwkH1eqfhHzTV9I73ohAdjdDzwPVG40cnTTjlEiQ=w240-h480", desc:"Lightweight sketchpad for quick doodles. Save to gallery."},
-      {name:"Only Clock",        pkg:"com.andmobi.clock",        cat:"tools", icon:"https://play-lh.googleusercontent.com/c-mUjSGiPI0THetffaRbJ-S4ybWE5z28SJyr3e1T63HVgXzBVnQe5K4K2sfxIRDqjEUpPieDai6h9CnZKfkCg2A=w240-h480", desc:"Alarms, timers and a calm bedside mode. Ad-free."},
-      {name:"Only Notes",        pkg:"com.andmobi.notes",        cat:"tools", icon:"https://play-lh.googleusercontent.com/BGJcMxF5hLVRAysg_DrYO61UTyaBCRL4KPyaEsJ9rhY_kZKauNCS83VpAUUziz9fx6waJHntFEWJ_sZUWjWKNw=w240-h480", desc:"Plain-text notes that sync to your brain—not the cloud."},
-      {name:"Only Calendar",     pkg:"com.andmobi.calendar",     cat:"tools", icon:"https://play-lh.googleusercontent.com/Wy7_ug7bQVxsKuG_yVOQe-K5FBIV4-T2rHd9q2QmLK_-K1jaO8b9Ww1AR9th7ItAL_0ihBz1uzT0eSUw_SlkrQ=w240-h480", desc:"Clean calendar with a simple month & agenda view. Private."},
-      {name:"Only Files (Applock)",pkg:"com.andmobi.applocker",  cat:"tools", icon:"https://play-lh.googleusercontent.com/wewWweEHo0pWqS5h0BEbREd73QNM6zoWzFtVxaIq1GHrXrsMfPY_oXCxk4Qul3bQx1JgOZBRGmRBnkTpbc21=w240-h480", desc:"Lock apps with fingerprint, PIN or pattern. Works offline. No ads."},
-
-      // communication
-      {name:"Only Phone",        pkg:"com.andmobi.phone",        cat:"communication", icon:"https://play-lh.googleusercontent.com/0s4tQv51BtwzXCOTujAKNY3mTx-xE2TfbWmjY9p5nDWcO1XCMNvdLR_7UhZkWERQ0oVRX-Yz7BIK_v5H9kFYLFs=w240-h480", desc:"A lightning-fast dialer with favorites and recent calls. Ad-free."},
-      {name:"Only Contacts",     pkg:"com.andmobi.contacts",     cat:"communication", icon:"https://play-lh.googleusercontent.com/evneDxrQxuyFBuayY4ZxBjHlZ1xWOCzK7mkPRHz_ApJBPzAVSxGI2AuHv1nrQw5VH8olDioq9FI5itAFEbp-=w240-h480", desc:"Simple contacts manager—fast, local, and private."},
-      {name:"Only Messages",     pkg:"com.andmobi.messages",     cat:"communication", icon:"https://play-lh.googleusercontent.com/FMfVYb1DoIjhqNa9rJEZqqo6Yb3H-UfhJzbHuaHmoSZGsvcMvu8ejT_iDtYq7KD5h-49IOoGYLvgJ4IW8cV03A=w240-h480", desc:"Focused SMS/MMS with just the essentials. No bloat."}
-    ];
-
-    // ---------- helpers ----------
-    const $apps = document.getElementById('apps');
-    const $q = document.getElementById('q');
-    const $clear = document.getElementById('clear');
-    const $reset = document.getElementById('reset');
-    const $count = document.getElementById('result-count');
-    const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    const FIXED_FEATURED = ["Only Play","Only Gallery","Only Music","Only Launcher"]; // order matters
-
-    function seededRand(seed){ let s = seed>>>0; return ()=>{ s=(s*1664525+1013904223)>>>0; return s/4294967296; }; }
-    function pickDaily(list, n){
-      const d = new Date(); const seed = d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
-      const rand = seededRand(seed); list = list.slice();
-      for(let i=list.length-1;i>0;i--){ const j = Math.floor(rand()*(i+1)); [list[i],list[j]]=[list[j],list[i]]; }
-      return list.slice(0, Math.min(n, list.length));
-    }
-
-    function computeFeatured(){
-      const fixed = APPS.filter(a => FIXED_FEATURED.includes(a.name));
-      const pool = APPS.filter(a => !FIXED_FEATURED.includes(a.name));
-      const rotating = pickDaily(pool, 3);
-      const fixedOrdered = FIXED_FEATURED.map(n => fixed.find(a=>a.name===n)).filter(Boolean);
-      return fixedOrdered.concat(rotating);
-    }
-
-    function playUrl(pkg){ return `https://play.google.com/store/apps/details?id=${pkg}`; }
-
-    function cardHtml(app, isFeatured){
-      return `
-      <article class="card" data-name="${app.name}" data-category="${app.cat}">
-        <div class="icon"><img loading="lazy" src="${app.icon}" alt="${app.name} icon"></div>
-        <div class="content">
-          <h3 class="name">${app.name}</h3>
-          <div class="dev">OnlyZero • <span class="chip">${app.cat}</span></div>
-          <p class="desc">${app.desc}</p>
-        </div>
-        ${isFeatured ? `<div class="badge">★ Featured</div>` : ``}
-        <a class="card-link" href="${playUrl(app.pkg)}" target="_blank" rel="noopener" aria-label="Open ${app.name} on Google Play"></a>
-      </article>`;
-    }
-
-    function render(filter="all", term=""){
-      const termLc = term.trim().toLowerCase();
-      const featuredSet = new Set(computeFeatured().map(a=>a.name));
-
-      let list = APPS.slice();
-
-      if (filter === "featured") {
-        list = list.filter(a => featuredSet.has(a.name));
-      } else if (filter !== "all") {
-        list = list.filter(a => a.cat === filter);
-      }
-
-      if (termLc) {
-        list = list.filter(a =>
-          a.name.toLowerCase().includes(termLc) ||
-          a.desc.toLowerCase().includes(termLc)
-        );
-      }
-
-      if (filter === "all") {
-        const order = computeFeatured().map(a=>a.name);
-        list.sort((a,b)=>{
-          const ia = order.indexOf(a.name), ib = order.indexOf(b.name);
-          if(ia>-1 && ib>-1) return ia-ib;
-          if(ia>-1) return -1;
-          if(ib>-1) return 1;
-          return a.name.localeCompare(b.name);
-        });
-      }
-
-      $apps.innerHTML = list.map(a => cardHtml(a, featuredSet.has(a.name))).join('');
-      $count.textContent = `${list.length} app${list.length===1?'':'s'} shown`;
-    }
-
-    function setActiveFilter(val){
-      filterBtns.forEach(b=>{
-        const active = b.dataset.filter === val;
-        b.classList.toggle('active', active);
-        b.setAttribute('aria-selected', String(active));
-      });
-    }
-
-    // events
-    filterBtns.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        setActiveFilter(btn.dataset.filter);
-        render(btn.dataset.filter, $q.value);
-      });
-      btn.addEventListener('keydown', e=>{
-        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); btn.click(); }
-      });
-    });
-    $q.addEventListener('input', ()=> {
-      const active = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
-      render(active, $q.value);
-    });
-    $q.addEventListener('keydown', e=>{ if(e.key==='Escape'){ $q.value=''; render(document.querySelector('.filter-btn.active')?.dataset.filter || 'all', ''); }});
-    $clear.addEventListener('click', ()=>{ $q.value=''; $q.focus(); render(document.querySelector('.filter-btn.active')?.dataset.filter || 'all', ''); });
-    $reset.addEventListener('click', ()=>{ $q.value=''; setActiveFilter('all'); render('all',''); });
-
-    // initial
-    setActiveFilter('all');
-    render('all','');
-
-    // --------- Privacy: try to load external page and inject ---------
-    (async function loadExternalPrivacy(){
-      const externalUrl = 'https://ozofficial.github.io/privacy.html';
-      const $fallback = document.getElementById('privacy-fallback');
-      const $external = document.getElementById('privacy-external');
-      try {
-        const res = await fetch(externalUrl, {mode: 'cors'});
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const html = await res.text();
-
-        const dom = new DOMParser().parseFromString(html, 'text/html');
-        let content =
-          dom.querySelector('main')?.innerHTML ||
-          dom.querySelector('article')?.innerHTML ||
-          dom.body?.innerHTML || '';
-
-        const tmp = document.createElement('div');
-        tmp.innerHTML = content;
-        tmp.querySelectorAll('script').forEach(s => s.remove());
-
-        if (tmp.textContent.trim().length > 40) {
-          $external.innerHTML = tmp.innerHTML;
-          $external.hidden = false;
-          $fallback.hidden = true;
-        }
-      } catch (e) {
-        // fallback stays visible
-      }
-    })();
-  </script>
+<script src="script.js" defer></script>
 </body>
 </html>
