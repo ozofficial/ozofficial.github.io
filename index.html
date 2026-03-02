@@ -3,45 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OZ Lab – Essential Android Apps</title>
-<meta name="description" content="Clean, minimal Android apps by OZ Lab. Privacy-first tools.">
-
-<!-- Open Graph -->
-<meta property="og:title" content="OZ Lab – Essential Android Apps">
-<meta property="og:description" content="Clean. Minimal. Privacy-first Android apps.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ozofficial.github.io/">
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-<rect width='100' height='100' rx='20' fill='%23F64C17'/>
-<text x='50' y='60' font-size='50' text-anchor='middle' fill='white' font-family='Arial'>OZ</text>
-</svg>">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Organization",
- "name": "OZ Lab",
- "url": "https://ozofficial.github.io/",
- "sameAs": ["https://play.google.com/store/apps/dev?id=6324446257194202838&hl=en_IN"]
-}
-</script>
+<title>OZ Lab – Android Apps</title>
+<meta name="description" content="Explore all OZ Lab Android apps. Clean, minimal Android tools.">
 
 <style>
 :root{
   --accent:#F64C17;
-  --bg:#f7f7f9;
+  --bg:#f1f3f4;
   --card:#ffffff;
-  --text:#1c1c1c;
+  --text:#202124;
 }
 
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#111;
-    --card:#1c1c1c;
+    --bg:#121212;
+    --card:#1e1e1e;
     --text:#f5f5f5;
   }
 }
@@ -49,199 +25,170 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-family:Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
 }
 
-/* Scroll progress */
-#progress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:3px;
-  background:var(--accent);
-  width:0%;
-  z-index:2000;
-}
-
-/* Typography scale */
-h1{font-size:clamp(26px,4vw,34px);}
-.hero h2{font-size:clamp(34px,6vw,56px);}
-.hero p{font-size:clamp(16px,2vw,20px);}
-
-/* Sticky header */
+/* HEADER (Compact) */
 header{
+  background:white;
+  padding:10px 20px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.05);
   position:sticky;
   top:0;
-  backdrop-filter:blur(8px);
-  background:rgba(255,255,255,0.85);
-  padding:16px 20px;
-  text-align:center;
   z-index:1000;
 }
 @media (prefers-color-scheme: dark){
-  header{background:rgba(17,17,17,0.85);}
+  header{background:#1e1e1e;}
+}
+header h1{
+  font-size:18px;
+}
+header p{
+  font-size:12px;
+  opacity:.7;
+  margin-top:2px;
 }
 
-/* Hero */
-.hero{
+/* SMALL TITLE SECTION */
+.top-title{
+  padding:14px 20px 6px;
   text-align:center;
-  padding:100px 20px 80px;
-  position:relative;
 }
-.hero::before{
-  content:"";
-  position:absolute;
-  width:600px;
-  height:600px;
-  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
-  opacity:.07;
-  top:-200px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:-1;
+.top-title h2{
+  font-size:20px;
+  font-weight:600;
+}
+.top-title p{
+  font-size:13px;
+  opacity:.6;
+  margin-top:3px;
 }
 
-/* Search */
+/* SEARCH (Tight) */
 .search{
-  max-width:500px;
-  margin:40px auto;
+  max-width:600px;
+  margin:8px auto 10px;
 }
 .search input{
   width:100%;
-  padding:14px 18px;
-  border-radius:40px;
-  border:1px solid #ccc;
-  font-size:16px;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #dadce0;
+  font-size:14px;
 }
 
-/* Filter */
+/* FILTER (Tight) */
 .filter{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:10px;
 }
 .filter button{
-  margin:6px;
-  padding:8px 16px;
-  border-radius:20px;
-  border:1px solid var(--accent);
-  background:transparent;
-  color:var(--accent);
+  margin:4px;
+  padding:6px 14px;
+  border-radius:18px;
+  border:none;
+  background:#e8eaed;
   cursor:pointer;
-  transition:.25s ease;
+  font-size:13px;
+  font-weight:500;
 }
 .filter button.active{
   background:var(--accent);
   color:white;
 }
 
-/* Grid */
+/* GRID */
 .container{
   max-width:1200px;
   margin:auto;
-  padding:20px;
+  padding:10px 16px 20px;
 }
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:26px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
 }
 
-/* Card */
+/* CARD (Dense) */
 .card{
   background:var(--card);
-  padding:22px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-  position:relative;
-  overflow:hidden;
-  transition:.3s ease;
-  opacity:0;
-  transform:translateY(20px);
-}
-.card.visible{
-  opacity:1;
-  transform:translateY(0);
+  padding:14px;
+  border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  transition:.2s ease;
 }
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 12px 40px rgba(246,76,23,0.12);
+  box-shadow:0 4px 14px rgba(0,0,0,0.12);
+  transform:translateY(-3px);
 }
 
-/* Ripple */
-.card::after{
-  content:"";
-  position:absolute;
-  width:0;
-  height:0;
-  background:rgba(246,76,23,0.15);
-  border-radius:50%;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  transition:.4s ease;
-}
-.card:active::after{
-  width:400px;
-  height:400px;
-}
-
-/* App layout */
 .app-top{
   display:flex;
-  gap:16px;
+  gap:12px;
 }
 .app-icon{
-  width:60px;
-  height:60px;
-  border-radius:14px;
+  width:52px;
+  height:52px;
+  border-radius:12px;
   background:var(--accent);
   display:flex;
   align-items:center;
   justify-content:center;
   color:white;
-  font-size:24px;
+  font-size:20px;
 }
-.install-badge{
+
+.card h3{
+  font-size:14px;
+}
+.card p{
   font-size:12px;
-  opacity:.6;
-  margin-top:6px;
-  display:flex;
-  align-items:center;
-  gap:4px;
+  opacity:.7;
+  margin-top:3px;
 }
+.install{
+  font-size:11px;
+  opacity:.6;
+  margin-top:4px;
+}
+
 .badge{
-  margin-top:18px;
+  margin-top:10px;
 }
 .badge img{
-  height:42px;
-  transition:.25s ease;
+  height:32px;
+  transition:.2s ease;
 }
 .badge img:hover{
   transform:scale(1.05);
 }
 
-/* Sections */
-.section{
-  margin-top:120px;
-  text-align:center;
+/* PRIVACY (Compact) */
+.privacy{
+  margin-top:40px;
+  background:var(--card);
+  padding:25px 16px;
+  border-top:1px solid rgba(0,0,0,0.05);
 }
-.section h2{
-  font-size:28px;
-  margin-bottom:20px;
+.privacy h2{
+  font-size:16px;
+  margin-bottom:12px;
 }
-.section p{
-  max-width:700px;
-  margin:auto;
-  opacity:.75;
+.privacy p{
+  font-size:13px;
+  margin-bottom:10px;
+  line-height:1.6;
+  opacity:.85;
 }
 
+/* FOOTER */
 footer{
+  margin-top:20px;
+  padding:20px;
   text-align:center;
-  padding:80px 20px;
-  font-size:14px;
+  font-size:13px;
   opacity:.6;
 }
 </style>
@@ -249,16 +196,14 @@ footer{
 
 <body>
 
-<div id="progress"></div>
-
 <header>
   <h1>OZ Lab</h1>
   <p>Essential Apps. Zero Clutter.</p>
 </header>
 
-<div class="hero">
-  <h2>Minimal Android Tools</h2>
-  <p>Clean. Private. Focused.</p>
+<div class="top-title">
+  <h2>All Apps</h2>
+  <p>Fast. Clean. Reliable Android tools.</p>
 </div>
 
 <div class="search">
@@ -274,22 +219,30 @@ footer{
 
 <div class="container">
   <div class="grid" id="appGrid"></div>
+</div>
 
-  <div class="section">
-    <h2>Privacy First</h2>
-    <p>No ads. No trackers. No analytics. Designed to respect your data.</p>
-  </div>
-
-  <div class="section">
-    <h2>Contact</h2>
-    <p>onlyapp.contact@gmail.com</p>
-  </div>
+<div class="privacy">
+  <h2>Privacy Policy</h2>
+  <p><strong>Effective Date: 2026</strong></p>
+  <p>
+    OZ Lab operates a collection of Android applications. We do not collect,
+    store, transmit, or share personal data. Our apps work primarily offline
+    and do not require account registration.
+  </p>
+  <p>
+    We do not use analytics, tracking technologies, advertising SDKs,
+    or third-party data collection services.
+  </p>
+  <p>
+    All data created within the apps remains on your device.
+    Contact: onlyapp.contact@gmail.com
+  </p>
 </div>
 
 <footer>
-  © 2026 OZ Lab · 
+  © 2026 OZ Lab ·
   <a href="https://play.google.com/store/apps/dev?id=6324446257194202838&hl=en_IN" target="_blank">
-    View Developer Page
+    Google Play
   </a>
 </footer>
 
@@ -298,27 +251,27 @@ const apps = [
 ["Only Phone","📞","Minimal dialer & call management","tools","10K+","com.andmobi.phone"],
 ["Only Gallery","🖼️","Fast photo & video gallery","media","50K+","com.andmobi.gallery"],
 ["Zero Music","🎵","Lightweight music player","media","10K+","com.vidxlab.music"],
-["HD Video Player – Zero","🎬","Smooth HD video playback","media","100K+","com.vidxlab.hdplayer"],
+["HD Video Player – Zero","🎬","Smooth HD playback","media","100K+","com.vidxlab.hdplayer"],
 ["Only Contacts","👤","Simple contact manager","system","10K+","com.andmobi.contacts"],
-["Only Home","🏠","Minimal Android launcher","system","10K+","com.andmobi.home"],
-["Only Recorder","🎙️","Clean voice recording app","tools","10K+","com.andmobi.voicerecorder"],
+["Only Home","🏠","Minimal launcher","system","10K+","com.andmobi.home"],
+["Only Recorder","🎙️","Clean voice recorder","tools","10K+","com.andmobi.voicerecorder"],
 ["Only Calculator","🧮","Simple daily calculator","tools","50K+","com.andmobi.math"],
-["Only Paint","🎨","Lightweight drawing app","tools","10K+","com.andmobi.paint"],
+["Only Paint","🎨","Light drawing app","tools","10K+","com.andmobi.paint"],
 ["Only Messages","💬","Distraction-free messaging","system","10K+","com.andmobi.messages"],
 ["Only Keyboard","⌨️","Clean typing experience","system","10K+","com.andmobi.keyboard"],
 ["Only Clock","⏰","Minimal alarm & clock","system","10K+","com.andmobi.clock"],
-["Only Notes","📝","Quick note taking","tools","10K+","com.andmobi.notes"],
-["Only Calendar","📅","Simple schedule planner","system","10K+","com.andmobi.calendar"],
-["Only Camera","📷","Fast and clean camera","media","10K+","com.andmobi.camera"],
-["Only Music","🎧","Simple music playback","media","10K+","com.andmobi.music"],
-["Only File Manager","📂","Lightweight file explorer","tools","10K+","com.andmobi.filemanager"],
+["Only Notes","📝","Quick notes","tools","10K+","com.andmobi.notes"],
+["Only Calendar","📅","Simple planner","system","10K+","com.andmobi.calendar"],
+["Only Camera","📷","Fast camera","media","10K+","com.andmobi.camera"],
+["Only Music","🎧","Music playback","media","10K+","com.andmobi.music"],
+["Only File Manager","📂","File explorer","tools","10K+","com.andmobi.filemanager"],
 ["Only Play","▶️","Minimal video player","media","10K+","com.andmobi.onlyplay"],
 ["Only App Locker","🔒","Secure app locking","system","10K+","com.andmobi.applocker"]
 ];
 
 const grid=document.getElementById("appGrid");
 
-apps.forEach((app,index)=>{
+apps.forEach(app=>{
   const card=document.createElement("div");
   card.className="card";
   card.setAttribute("data-name",app[0].toLowerCase());
@@ -328,8 +281,8 @@ apps.forEach((app,index)=>{
       <div class="app-icon">${app[1]}</div>
       <div>
         <h3>${app[0]}</h3>
-        <p style="font-size:13px; opacity:.65; margin-top:4px;">${app[2]}</p>
-        <div class="install-badge">⬇ ${app[4]} installs</div>
+        <p>${app[2]}</p>
+        <div class="install">⬇ ${app[4]} installs</div>
       </div>
     </div>
     <div class="badge">
@@ -341,7 +294,6 @@ apps.forEach((app,index)=>{
   grid.appendChild(card);
 });
 
-/* Search */
 document.getElementById("searchInput").addEventListener("keyup",function(){
   const v=this.value.toLowerCase();
   document.querySelectorAll(".card").forEach(c=>{
@@ -349,7 +301,6 @@ document.getElementById("searchInput").addEventListener("keyup",function(){
   });
 });
 
-/* Filter */
 function filterApps(event,cat){
   document.querySelectorAll(".filter button").forEach(btn=>btn.classList.remove("active"));
   event.target.classList.add("active");
@@ -357,26 +308,6 @@ function filterApps(event,cat){
     c.style.display=(cat==="all"||c.dataset.category===cat)?"block":"none";
   });
 }
-
-/* Stagger scroll reveal */
-const cards=document.querySelectorAll(".card");
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const index=[...cards].indexOf(entry.target);
-      entry.target.style.transitionDelay=(index*0.04)+"s";
-      entry.target.classList.add("visible");
-    }
-  });
-},{threshold:0.1});
-cards.forEach(c=>observer.observe(c));
-
-/* Scroll progress */
-window.addEventListener("scroll",()=>{
-  const winScroll=document.documentElement.scrollTop;
-  const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-  document.getElementById("progress").style.width=(winScroll/height)*100+"%";
-});
 </script>
 
 </body>
