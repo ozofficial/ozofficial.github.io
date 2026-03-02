@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://ozofficial.github.io/sitemap.xml
