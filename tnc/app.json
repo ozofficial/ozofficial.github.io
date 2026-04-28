@@ -1,0 +1,16 @@
+{
+  "flags": {
+    "showPromotedApps": true,
+    "disableSDK": false
+  },
+  "data": {
+    "apps": [
+      {
+        "name": "Only Phone – Dialer App",
+        "packageName": "com.andmobi.phone",
+        "category": "utilities",
+        "iconLogo": "https://play-lh.googleusercontent.com/IKx1p9LuefH92kJnF4VTYNoKJach65y5Hpc6TxiD2oemRKGYwQUJhFmamxv_fTMCN-KfQVx0YnELUDJ1MiyHyB0=w480-h960-rw"
+      }
+    ]
+  }
+}
